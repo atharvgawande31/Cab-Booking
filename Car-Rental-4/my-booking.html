@@ -4,42 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Bookings - Car Rentals</title>
-    <!-- Tailwind CSS CDN -->
+    <link rel="stylesheet" href="style.css">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons CDN -->
+
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* --- Root Variables: Light Mode Theme --- */
-        :root {
-            --primary: 222.2 47.4% 11.2%; /* Near Black */
-            --accent: 210 100% 50%; /* Vibrant Blue */
-            --background: 0 0% 100%; /* White */
-            --foreground: 222.2 47.4% 11.2%; 
-            --muted: 210 40% 96.1%; /* Very Light Gray */
-            --secondary: 210 40% 96.1%; 
-            --success: 142 71% 45%; /* Green */
-            --warning: 38 92% 50%; /* Amber/Yellow */
-            --destructive: 0 84.2% 60.2%; /* Red */
-            --border: 214.3 31.8% 91.4%; 
-        }
 
-        /* Utility Classes */
-        .text-accent { color: hsl(var(--accent)); }
-        .bg-accent { background-color: hsl(var(--accent)); }
-        .text-primary { color: hsl(var(--primary)); }
-        .bg-gradient-primary { background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent)/80) 100%); }
-        .bg-gradient-card { background: linear-gradient(135deg, hsl(var(--muted)) 0%, hsl(var(--background)) 100%); }
-        .text-muted-foreground { color: hsla(var(--foreground), 0.6); }
-        .bg-background { background-color: hsl(var(--background)); }
-        .text-foreground { color: hsl(var(--foreground)); }
-        .text-success { color: hsl(var(--success)); }
-        .text-destructive { color: hsl(var(--destructive)); }
-        .bg-success { background-color: hsl(var(--success)); }
-        .bg-warning { background-color: hsl(var(--warning)); }
-        .bg-destructive { background-color: hsl(var(--destructive)); }
-        .text-white { color: white; }
 
-        /* Component Simulation */
         .card { background-color: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: 0.5rem; }
         .shadow-card { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); }
         .hover\:shadow-elegant:hover { box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); }

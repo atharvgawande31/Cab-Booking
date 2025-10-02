@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Browse Our Fleet - Car Rental</title>
+    <link rel="stylesheet" href="style.css">
 
     <script src="carData.js"></script>
 
@@ -11,89 +12,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
       /* Custom Tailwind Configuration (Black Primary, Blue Accent) */
-      :root {
-        /* Primary: Black */
-        --primary: 0 0% 0%;
-        /* Accent: Vibrant Blue */
-        --accent: 210 100% 50%;
-        /* Background: Very Dark Gray/Black */
-        --background: 240 10% 3.9%;
-        /* Foreground: White/Off-White */
-        --foreground: 0 0% 98%;
-        /* Muted: Slightly lighter dark color for card backgrounds, inputs */
-        --muted: 240 5% 6.4%;
-        /* Success Color (for 'Available' badge) */
-        --success: 142 76% 36%;
-        /* Destructive Color (for 'Booked' badge) */
-        --destructive: 0 84.2% 60.2%;
-      }
-
-      /* Custom utility classes using HSL values */
-      .text-accent {
-        color: hsl(var(--accent));
-      }
-      .bg-accent {
-        background-color: hsl(var(--accent));
-      }
-      .fill-accent {
-        fill: hsl(var(--accent));
-      }
-      .border-accent\/10 {
-        border-color: hsla(var(--accent), 0.1);
-      }
-      .bg-primary {
-        background-color: hsl(var(--primary));
-      }
-      .hover\:bg-primary\/90:hover {
-        background-color: hsla(var(--primary), 0.8);
-      }
-      .text-primary {
-        color: hsl(var(--primary));
-      }
-      .border-primary {
-        border-color: hsl(var(--primary));
-      }
-      .hover\:bg-primary:hover {
-        background-color: hsl(var(--primary));
-      }
-      .bg-gradient-primary {
-        background: linear-gradient(
-          135deg,
-          hsl(var(--primary)) 0%,
-          hsl(var(--primary) / 90) 100%
-        );
-      }
-      .bg-gradient-card {
-        background: linear-gradient(
-          135deg,
-          hsl(var(--muted)) 0%,
-          hsl(var(--background)) 100%
-        );
-      }
-
-      /* Custom classes for the specific components */
-      .shadow-card {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      }
-      .shadow-glow {
-        box-shadow: 0 0 10px rgba(30, 144, 255, 0.3);
-      } /* Subtle blue glow */
-
-      /* Success & Destructive colors for Badges */
-      .bg-success {
-        background-color: hsl(var(--success));
-      }
-      .bg-destructive {
-        background-color: hsl(var(--destructive));
-      }
-      .text-white {
-        color: #fff;
-      }
-      .text-foreground\/70 {
-        color: hsla(var(--foreground), 0.7);
-      }
-
-      /* Slider Styles (Simulating ShadCN Slider) */
+      
       .slider-track {
         position: relative;
         background-color: hsl(var(--muted));
