@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - RentFlow</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+
+        input, textarea, select {
+            border: 1px solid hsl(var(--border));
+            padding: 0.5c rem 0.75rem;
+            border-radius: 0.375rem;
+            width: 100%;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+        }
+        input:focus, textarea:focus, select:focus { 
+            border-color: hsl(var(--accent)); 
+            box-shadow: 0 0 0 1px hsl(var(--accent)); 
+            outline: none; 
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground">
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <div class="flex-shrink-0">
+                    <a href="home.html" class="text-2xl font-bold text-primary flex items-center">
+                        <i data-lucide="car-front" class="h-6 w-6 text-accent mr-2"></i>
+                        RentACar
+                    </a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    
+                    <a href="home.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        Home
+                    </a>
+                    <a href="cars.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        Our Fleet
+                    </a>
+                    <a href="about.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        About Us
+                    </a>
+                    <a href="contact.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        Contact
+                    </a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-4">
+              
+                    <button 
+                        class="px-4 py-2 bg-black text-white rounded-lg font-semibold hover:bg-accent/90 transition duration-150 ease-in-out shadow-md"
+                    >
+                       <a href="/Car-Rental-4/Auth.html">Get Started</a>
+                    </button>
+                </div>
+
+                <div class="flex md:hidden">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-accent">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-muted">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="home.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Home</a>
+                <a href="cars.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Our Fleet</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">About Us</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Contact</a>
+                
+                <div class="pt-4 space-y-2 border-t border-muted">
+                  
+                    <button class="w-full h-10 px-4 py-2 text-center bg-accent text-white rounded-lg font-semibold hover:bg-accent/90 transition">
+                       <a href="/Car-Rental-4//auth.html"></a> 
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Optional: Navbar Placeholder -->
+    <header id="navbar-placeholder" class="sticky top-0 z-40"></header>
+    
+    <div class="min-h-screen">
+        <!-- Header -->
+        <section class="bg-gradient-primary text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+                    <p class="text-xl text-white/90 max-w-2xl mx-auto">
+                        We're here to help with any questions about your car rental experience
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Contact Form -->
+                <div class="lg:col-span-2">
+                    <div id="contact-form-container">
+                        <!-- Form injected here by JS -->
+                    </div>
+                </div>
+
+                <!-- Contact Information and Quick Actions -->
+                <div id="contact-info-sidebar" class="space-y-6">
+                    <!-- Sidebar content injected here by JS -->
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="mt-16">
+                <div id="faq-container" class="card shadow-elegant">
+                    <!-- FAQ content injected here by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Optional: Footer Placeholder -->
+    <footer class="bg-[#0a2342] text-white py-10 mt-20">
+        <div class="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+          <div>
+            <h2 class="text-2xl font-bold">RentACar</h2>
+            <p class="mt-3 text-gray-300 text-sm leading-relaxed">
+              Your trusted car rental service for every journey. Safe, affordable, and reliable rides across India.
+            </p>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="#" class="hover:text-white transition">Home</a></li>
+              <li><a href="#" class="hover:text-white transition">About Us</a></li>
+              <li><a href="#" class="hover:text-white transition">Our Cars</a></li>
+              <li><a href="#" class="hover:text-white transition">Contact</a></li>
+            </ul>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Support</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+              <li><a href="#" class="hover:text-white transition">Booking Policy</a></li>
+              <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
+              <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+            </ul>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Contact Us</h3>
+            <p class="text-gray-300 text-sm">📍 Mumbai, India</p>
+            <p class="text-gray-300 text-sm">📞 +91 98765 43210</p>
+            <p class="text-gray-300 text-sm">✉️ support@rentacar.com</p>
+            
+            <div class="flex gap-4 mt-4">
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm">
+          © 2025 RentACar. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // --- Data Definitions ---
+        const contactInfo = [
+            { icon: 'phone', title: "Phone Support", content: "+1 (555) 123-4567", description: "Mon-Fri 8AM-8PM, Sat-Sun 9AM-6PM" },
+            { icon: 'mail', title: "Email Support", content: "support@rentflow.com", description: "We respond within 24 hours" },
+            { icon: 'map-pin', title: "Main Office", content: "123 Business Ave, Suite 100", description: "Los Angeles, CA 90210" },
+            { icon: 'clock', title: "Business Hours", content: "Mon-Fri: 8AM-8PM", description: "Sat-Sun: 9AM-6PM PST" }
+        ];
+
+        const faqItems = [
+            { question: "What documents do I need to rent a car?", answer: "You'll need a valid driver's license, a credit card in your name, and a form of identification (passport or ID card)." },
+            { question: "What is your cancellation policy?", answer: "You can cancel your booking free of charge up to 24 hours before your pickup time. After that, cancellation fees may apply." },
+            { question: "Do you offer insurance coverage?", answer: "Yes, we offer multiple insurance options including basic, premium, and comprehensive coverage to protect you during your rental." },
+            { question: "Can I extend my rental period?", answer: "Yes, you can extend your rental period subject to vehicle availability. Contact us as soon as possible to arrange an extension." }
+        ];
+
+        // --- State Management ---
+        const formData = {
+            firstName: "", lastName: "", email: "", phone: "", subject: "", category: "", message: ""
+        };
+
+        // --- Core Functions ---
+        
+        function handleInputChange(field, value) {
+            formData[field] = value;
+            // console.log(formData); // For debugging
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            // Native form validation handles 'required' fields
+            if (!e.target.checkValidity()) {
+                return;
+            }
+
+            // Simulate sending message
+            console.log("Contact form submitted:", formData);
+            alert("Thank you for your message! We'll get back to you soon.");
+            
+            // Clear form (simulated reset)
+            e.target.reset();
+            Object.keys(formData).forEach(key => formData[key] = "");
+        }
+
+        // --- Rendering Functions ---
+
+        function renderContactForm() {
+            const container = document.getElementById('contact-form-container');
+            container.innerHTML = `
+                <div class="card shadow-elegant">
+                    <div class="p-6">
+                        <div class="flex items-center text-2xl pb-4 border-b border-border">
+                            <i data-lucide="message-circle" class="h-6 w-6 mr-2 text-primary"></i>
+                            <h3 class="font-bold text-primary">Send us a Message</h3>
+                        </div>
+                        <p class="text-muted-foreground pt-2">
+                            Fill out the form below and we'll get back to you as soon as possible.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 pt-0">
+                        <form id="contact-form" class="space-y-6">
+                            <!-- Name Fields -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label for="firstName" class="block text-sm font-medium">First Name *</label>
+                                    <input class="p-2" id="firstName" type="text" placeholder="John" required oninput="handleInputChange('firstName', this.value)" />
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="lastName" class="block text-sm font-medium">Last Name *</label>
+                                    <input class="p-2" id="lastName" type="text" placeholder="Doe" required oninput="handleInputChange('lastName', this.value)" />
+                                </div>
+                            </div>
+
+                            <!-- Contact Fields -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label for="email" class="block text-sm font-medium">Email Address *</label>
+                                    <input class="p-2" id="email" type="email" placeholder="john@example.com" required oninput="handleInputChange('email', this.value)" />
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="phone" class="block text-sm font-medium">Phone Number</label>
+                                    <input class="p-2" id="phone" type="tel" placeholder="+1 (555) 123-4567" oninput="handleInputChange('phone', this.value)" />
+                                </div>
+                            </div>
+
+                            <!-- Category and Subject (Simulated Select) -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label for="category" class="block text-sm font-medium">Category *</label>
+                                    <select class="p-2" id="category" required onchange="handleInputChange('category', this.value)" class="h-10">
+                                        <option value="" disabled selected>Select a category</option>
+                                        <option value="general">General Inquiry</option>
+                                        <option value="booking">Booking Support</option>
+                                        <option value="technical">Technical Issue</option>
+                                        <option value="billing">Billing Question</option>
+                                        <option value="feedback">Feedback</option>
+                                        <option value="complaint">Complaint</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="subject" class="block text-sm font-medium">Subject *</label>
+                                    <input class="p-2" id="subject" type="text" placeholder="Brief description of your inquiry" required oninput="handleInputChange('subject', this.value)" />
+                                </div>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="space-y-2">
+                                <label for="message" class="block text-sm font-medium">Message *</label>
+                                <textarea class="p-2" id="message" placeholder="Please provide details about your inquiry..." rows="6" required oninput="handleInputChange('message', this.value)"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-gradient-primary text-white hover:opacity-90 h-12 text-lg font-semibold rounded-lg">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            `;
+            // Attach the submit listener after the form is rendered
+            document.getElementById('contact-form').addEventListener('submit', handleSubmit);
+        }
+
+        function renderSidebarInfo() {
+            const container = document.getElementById('contact-info-sidebar');
+            
+            // 1. Contact Details Card
+            const infoCardHtml = `
+                <div class="card shadow-card">
+                    <div class="ph-5 py-6 space-y-6">
+                        <h3 class=" p-6 text-xl font-semibold pb-4 border-b border-border">Contact Information</h3>
+                        ${contactInfo.map(info => {
+                            const iconMap = {
+                                'Phone': 'phone', 'Email': 'mail', 'Main': 'map-pin', 'Business': 'clock'
+                            };
+                            const iconLucide = iconMap[info.title.split(' ')[0]] || 'help-circle';
+
+                            return `
+                                <div class="flex items-start space-x-3">
+                                    <div class="bg-primary/10 p-4 rounded-lg">
+                                        <i data-lucide="${iconLucide}" class="h-5 w-5 text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary">${info.title}</h4>
+                                        <p class="text-sm font-medium">${info.content}</p>
+                                        <p class="text-xs text-muted-foreground">${info.description}</p>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+            
+            // 2. Emergency Contact Card
+            const emergencyCardHtml = `
+                <div class="card border-warning/20 bg-warning/5 shadow-card">
+                    <div class="p-6">
+                        <div class="flex items-start text-xl text-warning pb-4 border-b border-border">
+                            <i data-lucide="headphones-icon" class="h-5 w-5 mr-2"></i>
+                            <h3 class="font-semibold">24/7 Emergency</h3>
+                        </div>
+                        <p class="text-sm pt-4 mb-3 text-gray-700">
+                            For urgent roadside assistance or emergencies during your rental:
+                        </p>
+                        <div class="font-extrabold text-2xl text-primary">+1 (555) 911-HELP</div>
+                        <p class="text-xs text-muted-foreground mt-1">
+                            Available 24 hours a day, 7 days a week
+                        </p>
+                    </div>
+                </div>
+            `;
+
+             // 3. Quick Actions Card
+            const quickActionsHtml = `
+                <div class="card shadow-card">
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-semibold pb-4 border-b border-border">Quick Actions</h3>
+                        
+                        <a href="my_bookings.html" class="block">
+                            <button class="w-full p-2 h-10 button-outline justify-start flex items-center hover:bg-muted">
+                                <i data-lucide="car" class="h-4 w-4 mr-2"></i>
+                                Modify Booking
+                            </button>
+                        </a>
+                        <a href="#" class="block">
+                            <button class="w-full p-2 h-10 button-outline justify-start flex items-center hover:bg-muted">
+                                <i data-lucide="shield" class="h-4 w-4 mr-2"></i>
+                                Report an Issue
+                            </button>
+                        </a>
+                        <a href="#" class="block">
+                            <button class="w-full p-2 h-10 button-outline justify-start flex items-center hover:bg-muted">
+                                <i data-lucide="message-circle" class="h-4 w-4 mr-2"></i>
+                                Live Chat Support
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = infoCardHtml + emergencyCardHtml + quickActionsHtml;
+        }
+
+        function renderFAQSection() {
+            const container = document.getElementById('faq-container');
+            
+            const faqHtml = `
+                <div class="p-6">
+                    <h3 class="text-3xl font-bold text-center text-primary">Frequently Asked Questions</h3>
+                    <p class="text-muted-foreground text-center mt-2 mb-8">
+                        Quick answers to common questions about our car rental service
+                    </p>
+                </div>
+                
+                <div class="p-6 pt-0">
+                    <div class="space-y-6">
+                        ${faqItems.map((item, index) => `
+                            <div>
+                                <h4 class="font-semibold mb-2 text-lg text-primary">${item.question}</h4>
+                                <p class="text-muted-foreground text-sm">${item.answer}</p>
+                                ${index < faqItems.length - 1 ? `<div class="separator mt-6"></div>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = faqHtml;
+        }
+
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderContactForm();
+            renderSidebarInfo();
+            renderFAQSection();
+            
+            // Re-render Lucide icons for all injected content
+            lucide.createIcons(); 
+        });
+    </script>
+</body>
+</html>

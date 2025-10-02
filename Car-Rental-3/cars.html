@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indian Car Fleet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Header Section -->
+  <section class="bg-gradient-to-r from-gray-900 to-black text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Fleet</h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+        Choose from our extensive collection of Indian cars for every journey
+      </p>
+    </div>
+  </section>
+
+  <!-- Pickup / Drop Location -->
+  <section class="py-8">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Pickup City</label>
+        <input type="text" id="pickupCity" placeholder="Enter Pickup City" class="w-full border rounded-md px-3 py-2 focus:ring-2 focus:ring-yellow-500">
+      </div>
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Drop City</label>
+        <input type="text" id="dropCity" placeholder="Enter Drop City" class="w-full border rounded-md px-3 py-2 focus:ring-2 focus:ring-yellow-500">
+      </div>
+      <div class="flex items-end">
+        <button id="updateLocation" class="bg-black text-white px-6 py-2 rounded-md w-full">Update Location</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="py-4 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div class="flex items-center gap-2 text-gray-600">
+        <i data-lucide="filter" class="w-4 h-4"></i>
+        <span id="filterby">Filter by:</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+        <div class="relative">
+          <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+          <input id="searchFleet" type="text" placeholder="Search cars..."
+            class="pl-10 w-full sm:w-64 border rounded-md h-10 px-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+        </div>
+        <select id="fleetCategory" class="border rounded-md h-10 px-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+          <option value="all">All Categories</option>
+          <option value="4 Seater">4 Seater</option>
+          <option value="7 Seater">7 Seater</option>
+          <option value="12 Seater">12 Seater</option>
+          <option value="24 Seater">24 Seater</option>
+        </select>
+        <select id="fleetPrice" class="border rounded-md h-10 px-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+          <option value="all">All Prices</option>
+          <option value="10-15">₹10-₹15/km</option>
+          <option value="16-25">₹16-₹25/km</option>
+          <option value="26-50">₹26-₹50/km</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cars Grid -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-semibold">Available Cars (<span id="carCount">0</span>)</h2>
+      </div>
+      <div id="fleetGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      <div id="noFleetResults" class="hidden text-center py-12">
+        <p class="text-lg text-gray-500 mb-4">No cars found matching your criteria</p>
+        <button id="clearFleetFilters" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md">Clear Filters</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    lucide.createIcons();
+
+    // Indian Car Fleet
+    const fleet = [
+      { id:1, name:"Maruti Swift Dzire", category:"4 Seater", price:12, rating:4.6, specs:{passengers:4,fuel:"Petrol"}, features:["AC","Music System","GPS"] },
+      { id:2, name:"Honda City", category:"4 Seater", price:15, rating:4.7, specs:{passengers:4,fuel:"Petrol"}, features:["AC","Music System","GPS"] },
+      { id:3, name:"Mahindra XUV500", category:"7 Seater", price:25, rating:4.5, specs:{passengers:7,fuel:"Diesel"}, features:["AC","Music System","GPS"] },
+      { id:4, name:"Toyota Innova Crysta", category:"7 Seater", price:30, rating:4.8, specs:{passengers:7,fuel:"Diesel"}, features:["AC","Music System","GPS"] },
+      { id:5, name:"Ashok Leyland 12 Seater", category:"12 Seater", price:40, rating:4.2, specs:{passengers:12,fuel:"Diesel"}, features:["AC","Music System"] },
+      { id:6, name:"Eicher 24 Seater Bus", category:"24 Seater", price:50, rating:4.5, specs:{passengers:24,fuel:"Diesel"}, features:["AC","Music System"] }
+    ];
+
+    const fleetGrid = document.getElementById("fleetGrid");
+    const carCount = document.getElementById("carCount");
+    const searchFleet = document.getElementById("searchFleet");
+    const fleetCategory = document.getElementById("fleetCategory");
+    const fleetPrice = document.getElementById("fleetPrice");
+    const noFleetResults = document.getElementById("noFleetResults");
+    const clearFleetFilters = document.getElementById("clearFleetFilters");
+    const pickupCity = document.getElementById("pickupCity");
+    const dropCity = document.getElementById("dropCity");
+    const updateLocation = document.getElementById("updateLocation");
+
+    // Load previous locations from localStorage
+    window.onload = function(){
+      const savedPickup = localStorage.getItem("pickupCity");
+      const savedDrop = localStorage.getItem("dropCity");
+      if(savedPickup) pickupCity.value = savedPickup;
+      if(savedDrop) dropCity.value = savedDrop;
+    }
+
+    function renderFleet() {
+      fleetGrid.innerHTML = "";
+      const filtered = fleet.filter(car => {
+        const searchTerm = searchFleet.value.toLowerCase();
+        const matchesSearch = car.name.toLowerCase().includes(searchTerm) || car.category.toLowerCase().includes(searchTerm);
+        const matchesCategory = fleetCategory.value === "all" || car.category === fleetCategory.value;
+        let matchesPrice = true;
+        if(fleetPrice.value !== "all"){
+          const [min,max] = fleetPrice.value.split("-").map(Number);
+          matchesPrice = car.price >= min && car.price <= max;
+        }
+        return matchesSearch && matchesCategory && matchesPrice;
+      });
+
+      carCount.textContent = filtered.length;
+      if(filtered.length === 0){ noFleetResults.classList.remove("hidden"); return; } else { noFleetResults.classList.add("hidden"); }
+
+      filtered.forEach(car => {
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden";
+
+        card.innerHTML = `
+          <div class="relative bg-gray-100 aspect-video flex items-center justify-center">
+            <span class="absolute top-4 left-4 bg-white/90 px-2 py-1 rounded text-sm font-medium">${car.category}</span>
+            <span class="absolute top-4 right-4 bg-white/90 px-2 py-1 rounded text-sm font-medium">₹${car.price}/km</span>
+            <i data-lucide="gauge" class="w-12 h-12 text-gray-400"></i>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-xl font-semibold">${car.name}</h3>
+              <div class="flex items-center gap-1 text-sm text-yellow-600">
+                <i data-lucide="star" class="w-4 h-4 fill-yellow-500"></i>
+                <span>${car.rating}</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-gray-500 text-sm mb-3">
+              <span class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4"></i>${car.specs.passengers}</span>
+              <span class="flex items-center gap-1"><i data-lucide="fuel" class="w-4 h-4"></i>${car.specs.fuel}</span>
+              <span class="flex items-center gap-1"><i data-lucide="gauge" class="w-4 h-4"></i>Auto</span>
+            </div>
+            <div class="flex flex-wrap gap-1 mb-3">
+              ${car.features.map(f => `<span class="border px-2 py-0.5 rounded text-xs">${f}</span>`).join("")}
+            </div>
+            <div class="flex gap-2">
+              <a href="car-details.html?id=${car.id}" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md py-2 text-center">Book Now</a>
+            </div>
+          </div>
+        `;
+        fleetGrid.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    searchFleet.addEventListener("input", renderFleet);
+    fleetCategory.addEventListener("change", renderFleet);
+    fleetPrice.addEventListener("change", renderFleet);
+    clearFleetFilters.addEventListener("click", () => {
+      searchFleet.value = "";
+      fleetCategory.value = "all";
+      fleetPrice.value = "all";
+      renderFleet();
+    });
+
+    updateLocation.addEventListener("click", () => {
+      localStorage.setItem("pickupCity", pickupCity.value);
+      localStorage.setItem("dropCity", dropCity.value);
+      alert(`Pickup City: ${pickupCity.value || "Not selected"}\nDrop City: ${dropCity.value || "Not selected"}`);
+    });
+
+    renderFleet();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+
+    /* 1. FONT IMPORT (Poppins) - Correct CSS @import Rule */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    /* 2. ROOT VARIABLES (Unified Light Mode Theme) */
+    :root {
+        /* Base Colors (Based on ShadCN Light Mode values) */
+        --background: 0 0% 100%; /* White */
+        --foreground: 220 13% 9%; /* Primary Black/Near Black */
+        
+        --primary: 220 13% 9%; /* Main Interactive/Text Color */
+        --primary-foreground: 0 0% 100%; /* White */
+
+        /* Accent/Brand Color (Vibrant Blue - used for CTA/Highlight) */
+        --accent: 217 91% 60%; 
+        --accent-foreground: 0 0% 100%; /* White */
+        
+        /* Secondary/Muted Colors */
+        --secondary: 215 25% 27%; /* Dark Gray */
+        --muted: 220 13% 95%; /* Very Light Gray (Input/Tabs BG) */
+        --border: 220 13% 91%; /* Light Border */
+        
+        /* Status Colors */
+        --success: 142 76% 36%;
+        --warning: 38 92% 50%;
+        --destructive: 0 84.2% 60.2%;
+    }
+
+    /* 3. BASE STYLES & FONT DEFAULTS */
+    body {
+        /* Includes Poppins and fallback system fonts (SF Pro equivalent on Apple devices) */
+        font-family: 'Poppins', 'SF Pro Display', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+    }
+
+    /* 4. UTILITY CLASSES (Consolidated for all pages) */
+    .text-primary { color: hsl(var(--primary)); }
+    .text-accent { color: hsl(var(--accent)); }
+    .bg-accent { background-color: hsl(var(--accent)); }
+    .bg-gradient-primary { 
+        background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent)/80) 100%); 
+    }
+    .text-muted-foreground { color: hsla(var(--foreground), 0.6); }
+    .bg-background { background-color: hsl(var(--background)); }
+    .text-foreground { color: hsl(var(--foreground)); }
+    .text-success { color: hsl(var(--success)); }
+    .text-destructive { color: hsl(var(--destructive)); }
+    .bg-success { background-color: hsl(var(--success)); }
+    .bg-warning { background-color: hsl(var(--warning)); }
+    .bg-destructive { background-color: hsl(var(--destructive)); }
+    .text-white { color: white; }
+    .bg-secondary\/30 { background-color: hsla(var(--secondary), 0.7); }
+
+    /* 5. COMPONENT STYLES (Simulating ShadCN/Custom UI) */
+    
+    /* Card Styles */
+    .card { background-color: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: 0.5rem; }
+    .separator { height: 1px; background-color: hsl(var(--border)); }
+    .shadow-luxury { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); } 
+    .shadow-card { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); } 
+    .shadow-glow { box-shadow: 0 0 15px hsl(var(--accent) / 0.4); } 
+    
+    /* Buttons */
+    .button-outline { border: 1px solid hsl(var(--border)); background-color: transparent; color: hsl(var(--foreground)); }
+    .button-outline:hover { background-color: hsl(var(--muted)); }
+
+    /* Forms */
+    input, textarea, select {
+        border: 1px solid hsl(var(--border));
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.375rem;
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+    }
+    input:focus, textarea:focus, select:focus { 
+        border-color: hsl(var(--accent)); 
+        box-shadow: 0 0 0 1px hsl(var(--accent)); 
+        outline: none; 
+    }
+    
+    /* Custom Gradients/Backgrounds */
+    .bg-gradient-overlay { background: linear-gradient(0deg, hsl(var(--primary)/0.8) 0%, hsl(var(--primary)/0.4) 50%, hsl(var(--primary)/0.8) 100%); }
+    .bg-gradient-card { background: linear-gradient(135deg, hsl(var(--muted)) 0%, hsl(var(--background)) 100%); }
+    .bg-primary\/10 { background-color: hsla(var(--primary), 0.1); } 
+    
+    /* Badges/Tabs */
+    .badge { display: inline-flex; padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+    .tabs-list { background-color: hsl(var(--muted)); border-radius: 0.5rem; padding: 0.25rem; }
+    .tabs-trigger.active {
+        background-color: hsl(var(--background));
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        color: hsl(var(--foreground));
+    }

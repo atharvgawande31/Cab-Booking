@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details - Dynamic (Light Mode)</title>
+    
+    <script src="carData.js"></script> 
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+<body class="bg-background text-foreground">
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <div class="flex-shrink-0">
+                    <a href="home.html" class="text-2xl font-bold text-primary flex items-center">
+                        <i data-lucide="car-front" class="h-6 w-6 text-accent mr-2"></i>
+                        RentACar
+                    </a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    
+                    <a href="home.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        Home
+                    </a>
+                    <a href="cars.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        Our Fleet
+                    </a>
+                    <a href="about.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        About Us
+                    </a>
+                    <a href="contact.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        Contact
+                    </a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-4">
+              
+                    <button 
+                        class="px-4 py-2 bg-black text-white rounded-lg font-semibold hover:bg-accent/90 transition duration-150 ease-in-out shadow-md"
+                    >
+                       <a href="/Car-Rental-4/Auth.html">Get Started</a>
+                    </button>
+                </div>
+
+                <div class="flex md:hidden">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-accent">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-muted">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="home.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Home</a>
+                <a href="cars.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Our Fleet</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">About Us</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Contact</a>
+                
+                <div class="pt-4 space-y-2 border-t border-muted">
+                  
+                    <button class="w-full h-10 px-4 py-2 text-center bg-accent text-white rounded-lg font-semibold hover:bg-accent/90 transition">
+                       <a href="/Car-Rental-4//auth.html">Get Started</a> 
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <footer class="bg-[#0a2342] text-white py-10 mt-20">
+        <div class="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+          <div>
+            <h2 class="text-2xl font-bold">RentACar</h2>
+            <p class="mt-3 text-gray-300 text-sm leading-relaxed">
+              Your trusted car rental service for every journey. Safe, affordable, and reliable rides across India.
+            </p>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="#" class="hover:text-white transition">Home</a></li>
+              <li><a href="#" class="hover:text-white transition">About Us</a></li>
+              <li><a href="#" class="hover:text-white transition">Our Cars</a></li>
+              <li><a href="#" class="hover:text-white transition">Contact</a></li>
+            </ul>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Support</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+              <li><a href="#" class="hover:text-white transition">Booking Policy</a></li>
+              <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
+              <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+            </ul>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Contact Us</h3>
+            <p class="text-gray-300 text-sm">📍 Mumbai, India</p>
+            <p class="text-gray-300 text-sm">📞 +91 98765 43210</p>
+            <p class="text-gray-300 text-sm">✉️ support@rentacar.com</p>
+            
+            <div class="flex gap-4 mt-4">
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm">
+          © 2025 RentACar. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+    
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+    <div class="min-h-screen">
+        <div class="bg-secondary/30 py-4">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center space-x-2 text-sm" id="breadcrumb-container">
+                    </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <a href="cars.html" id="back-to-cars">
+                <button class="mb-6 h-10 px-4 py-2 inline-flex items-center justify-center rounded-lg text-sm font-medium button-outline">
+                    <i data-lucide="arrow-left" class="h-4 w-4 mr-2"></i>
+                    Back to Cars
+                </button>
+            </a>
+            
+            <div id="car-detail-content" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                </div>
+            
+            <div id="not-found-message" class="hidden text-center py-20 card rounded-lg">
+                <i data-lucide="search-x" class="h-16 w-16 mx-auto mb-4 text-accent"></i>
+                <h2 class="text-3xl font-bold mb-2">Car Not Found 🧐</h2>
+                <p class="text-muted-foreground">The car ID provided in the URL does not match any vehicle in our fleet.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Data Definitions ---
+        // STEP 2: Use the GLOBAL_CAR_DATA from the external file
+        const carsData = GLOBAL_CAR_DATA;
+        
+        // --- Helper Function to Get URL Query Parameter (Simulates useParams) ---
+        function getCarIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            // We expect the ID to be passed as ?id=X from the home page
+            return parseInt(urlParams.get('id'));
+        }
+
+        // --- Core Rendering Function ---
+        function renderCarDetails() {
+            const carId = getCarIdFromUrl();
+            const car = carsData.find(c => c.id === carId);
+            const contentContainer = document.getElementById('car-detail-content');
+            const notFoundMessage = document.getElementById('not-found-message');
+
+            if (!car) {
+                contentContainer.innerHTML = '';
+                notFoundMessage.classList.remove('hidden');
+                return;
+            }
+            
+            notFoundMessage.classList.add('hidden');
+
+            // Ensure all required fields exist (safeguarding against incomplete mock data)
+            const rating = car.rating || 'N/A';
+            const reviews = car.reviews || '0';
+            const originalPrice = car.originalPrice || 0;
+            
+            const formattedPrice = `₹${car.price.toLocaleString()}`;
+            const formattedOriginalPrice = `₹${originalPrice.toLocaleString()}`;
+
+            contentContainer.innerHTML = `
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="card overflow-hidden rounded-lg">
+                        <div class="aspect-video bg-gradient-card relative">
+                            <div class="absolute inset-0 bg-gradient-primary/10 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i data-lucide="gauge" class="h-24 w-24 text-accent/50 mx-auto mb-4"></i>
+                                    <p class="text-xl text-muted-foreground">${car.name}</p>
+                                    <p class="text-sm text-muted-foreground">${car.category}</p>
+                                </div>
+                            </div>
+                            ${car.available ? `
+                                <span class="inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold bg-success text-success-foreground absolute top-4 left-4">
+                                    Available Now
+                                </span>` : ''
+                            }
+                        </div>
+                    </div>
+
+                    <div class="card rounded-lg">
+                        <div class="p-6">
+                            <div class="flex items-start justify-between mb-4 ">
+                                <div>
+                                    <h1 class="text-3xl font-bold mb-2">${car.name}</h1>
+                                    <p class="text-lg text-muted-foreground">${car.category}</p>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <div class="flex items-center space-x-1">
+                                            <i data-lucide="star" class="h-4 w-4 fill-accent text-accent"></i>
+                                            <span class="font-medium">${rating}</span>
+                                        </div>
+                                        <span class="text-muted-foreground">•</span>
+                                        <span class="text-sm text-muted-foreground">${reviews} reviews</span>
+                                        <span class="text-muted-foreground">•</span>
+                                        <div class="flex items-center space-x-1 text-sm text-muted-foreground">
+                                            <i data-lucide="map-pin" class="h-4 w-4"></i>
+                                            <span>${car.location}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-3xl font-bold text-accent">${formattedPrice}</div>
+                                    <div class="text-sm text-muted-foreground">per day</div>
+                                    ${originalPrice > car.price ? `
+                                        <div class="text-sm text-muted-foreground line-through">
+                                            ${formattedOriginalPrice}
+                                        </div>` : ''
+                                    }
+                                </div>
+                            </div>
+
+                            <p class="text-muted-foreground mb-6">${car.description}</p>
+
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                                <div class="text-center p-4 bg-secondary/30 rounded-lg">
+                                    <i data-lucide="users" class="h-6 w-6 mx-auto mb-2 text-primary"></i>
+                                    <div class="font-semibold">${car.specs.passengers}</div>
+                                    <div class="text-sm text-muted-foreground">Passengers</div>
+                                </div>
+                                <div class="text-center p-4 bg-secondary/30 rounded-lg">
+                                    <i data-lucide="fuel" class="h-6 w-6 mx-auto mb-2 text-primary"></i>
+                                    <div class="font-semibold">${car.specs.fuel}</div>
+                                    <div class="text-sm text-muted-foreground">Fuel Type</div>
+                                </div>
+                                <div class="text-center p-4 bg-secondary/30 rounded-lg">
+                                    <i data-lucide="gauge" class="h-6 w-6 mx-auto mb-2 text-primary"></i>
+                                    <div class="font-semibold">${car.specs.transmission}</div>
+                                    <div class="text-sm text-muted-foreground">Transmission</div>
+                                </div>
+                                <div class="text-center p-4 bg-secondary/30 rounded-lg">
+                                    <i data-lucide="shield" class="h-6 w-6 mx-auto mb-2 text-primary"></i>
+                                    <div class="font-semibold">${car.specs.luggage}</div>
+                                    <div class="text-sm text-muted-foreground">Luggage (Bags)</div>
+                                </div>
+                            </div>
+
+                            <div class="separator mb-6"></div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-muted-foreground">Engine:</span>
+                                    <span class="font-medium">${car.specs.engine}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-muted-foreground">Fuel Economy:</span>
+                                    <span class="font-medium">${car.specs.fuelEconomy}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-muted-foreground">Year:</span>
+                                    <span class="font-medium">${car.specs.year}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-muted-foreground">Color:</span>
+                                    <span class="font-medium">${car.specs.color}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card rounded-lg">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-4">Features & Amenities</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                ${car.features.map(feature => `
+                                    <div class="flex items-center space-x-2">
+                                        <i data-lucide="check" class="h-4 w-4 text-success"></i>
+                                        <span class="text-sm">${feature}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card rounded-lg">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-4">What's Included</h3>
+                            <div class="space-y-3">
+                                ${car.includedServices.map(service => `
+                                    <div class="flex items-center space-x-2">
+                                        <i data-lucide="check" class="h-4 w-4 text-success"></i>
+                                        <span class="text-sm">${service}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1 ">
+                    <div class="card sticky-top-6 shadow-elegant rounded-lg">
+                        <div class="p-6">
+                            <div class="text-center mb-6">
+                                <div class="text-3xl font-bold text-accent mb-1">${formattedPrice}</div>
+                                <div class="text-sm text-muted-foreground">per day</div>
+                                ${originalPrice > car.price ? `
+                                    <div class="text-sm text-muted-foreground line-through">
+                                        Was ${formattedOriginalPrice}
+                                    </div>` : ''
+                                }
+                            </div>
+
+                            <div class="space-y-4">
+                                <a href="booking.html?car=${car.id}">
+                                    <button class="w-full h-12 text-lg font-semibold rounded-lg bg-gradient-primary text-white hover:opacity-90">
+                                        Book This Car
+                                    </button>
+                                </a>
+                                
+                                <div class="text-center">
+                                    <div class="text-sm text-muted-foreground mb-2">Free cancellation up to 24 hours</div>
+                                    <div class="text-xs text-muted-foreground">
+                                        *Final price including taxes and fees will be calculated at checkout
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="separator my-6"></div>
+
+                            <div class="text-center">
+                                <h4 class="font-semibold mb-2">Need Help?</h4>
+                                <p class="text-sm text-muted-foreground mb-4">
+                                    Our team is here to assist you with your booking
+                                </p>
+                                <a href="/contact.html">
+                                    <button class="w-full h-10 text-sm font-medium rounded-lg button-outline">
+                                        Contact Support
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Render Breadcrumb dynamically
+            const breadcrumbContainer = document.getElementById('breadcrumb-container');
+            breadcrumbContainer.innerHTML = `
+                <a href="/index.html" class="text-muted-foreground hover:text-foreground">Home</a>
+                <span class="text-muted-foreground">/</span>
+                <a href="cars.html" class="text-muted-foreground hover:text-foreground">Cars</a>
+                <span class="text-muted-foreground">/</span>
+                <span class="text-foreground font-medium">${car.name}</span>
+            `;
+            
+            // Re-run Lucide to render icons in the new HTML
+            lucide.createIcons();
+        }
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCarDetails();
+            lucide.createIcons(); 
+        });
+    </script>
+</body>
+</html>

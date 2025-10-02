@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browse Our Fleet - Car Rental</title>
+
+    <script src="carData.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      /* Custom Tailwind Configuration (Black Primary, Blue Accent) */
+      :root {
+        /* Primary: Black */
+        --primary: 0 0% 0%;
+        /* Accent: Vibrant Blue */
+        --accent: 210 100% 50%;
+        /* Background: Very Dark Gray/Black */
+        --background: 240 10% 3.9%;
+        /* Foreground: White/Off-White */
+        --foreground: 0 0% 98%;
+        /* Muted: Slightly lighter dark color for card backgrounds, inputs */
+        --muted: 240 5% 6.4%;
+        /* Success Color (for 'Available' badge) */
+        --success: 142 76% 36%;
+        /* Destructive Color (for 'Booked' badge) */
+        --destructive: 0 84.2% 60.2%;
+      }
+
+      /* Custom utility classes using HSL values */
+      .text-accent {
+        color: hsl(var(--accent));
+      }
+      .bg-accent {
+        background-color: hsl(var(--accent));
+      }
+      .fill-accent {
+        fill: hsl(var(--accent));
+      }
+      .border-accent\/10 {
+        border-color: hsla(var(--accent), 0.1);
+      }
+      .bg-primary {
+        background-color: hsl(var(--primary));
+      }
+      .hover\:bg-primary\/90:hover {
+        background-color: hsla(var(--primary), 0.8);
+      }
+      .text-primary {
+        color: hsl(var(--primary));
+      }
+      .border-primary {
+        border-color: hsl(var(--primary));
+      }
+      .hover\:bg-primary:hover {
+        background-color: hsl(var(--primary));
+      }
+      .bg-gradient-primary {
+        background: linear-gradient(
+          135deg,
+          hsl(var(--primary)) 0%,
+          hsl(var(--primary) / 90) 100%
+        );
+      }
+      .bg-gradient-card {
+        background: linear-gradient(
+          135deg,
+          hsl(var(--muted)) 0%,
+          hsl(var(--background)) 100%
+        );
+      }
+
+      /* Custom classes for the specific components */
+      .shadow-card {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .shadow-glow {
+        box-shadow: 0 0 10px rgba(30, 144, 255, 0.3);
+      } /* Subtle blue glow */
+
+      /* Success & Destructive colors for Badges */
+      .bg-success {
+        background-color: hsl(var(--success));
+      }
+      .bg-destructive {
+        background-color: hsl(var(--destructive));
+      }
+      .text-white {
+        color: #fff;
+      }
+      .text-foreground\/70 {
+        color: hsla(var(--foreground), 0.7);
+      }
+
+      /* Slider Styles (Simulating ShadCN Slider) */
+      .slider-track {
+        position: relative;
+        background-color: hsl(var(--muted));
+        height: 8px;
+        border-radius: 9999px;
+        cursor: pointer;
+      }
+      .slider-range {
+        position: absolute;
+        background-color: hsl(var(--accent));
+        height: 100%;
+        border-radius: 9999px;
+      }
+      .slider-thumb {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background-color: #fff;
+        border: 2px solid hsl(var(--accent));
+        border-radius: 9999px;
+        cursor: pointer;
+        top: 50%;
+        transform: translateY(-50%);
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-background text-foreground">
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <div class="flex-shrink-0">
+                    <a href="home.html" class="text-2xl font-bold text-primary flex items-center">
+                        <i data-lucide="car-front" class="h-6 w-6 text-accent mr-2"></i>
+                        RentACar
+                    </a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    
+                    <a href="home.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        Home
+                    </a>
+                    <a href="cars.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        Our Fleet
+                    </a>
+                    <a href="about.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        About Us
+                    </a>
+                    <a href="contact.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                        Contact
+                    </a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-4">
+              
+                    <button 
+                        class="px-4 py-2 bg-black text-white rounded-lg font-semibold hover:bg-accent/90 transition duration-150 ease-in-out shadow-md"
+                    >
+                       <a href="/Car-Rental-4/Auth.html">Get Started</a>
+                    </button>
+                </div>
+
+                <div class="flex md:hidden">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-accent">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-muted">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="home.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Home</a>
+                <a href="cars.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Our Fleet</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">About Us</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Contact</a>
+                
+                <div class="pt-4 space-y-2 border-t border-muted">
+                  
+                    <button class="w-full h-10 px-4 py-2 text-center bg-accent text-white rounded-lg font-semibold hover:bg-accent/90 transition">
+                       <a href="/Car-Rental-4//auth.html"></a> 
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+    
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        });
+    </script>
+    <div class="min-h-screen">
+     
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div class="lg:col-span-1">
+            <div
+              id="filters-card"
+              class="sticky top-4 bg-muted rounded-xl shadow-card"
+            >
+              <div class="p-6 space-y-6">
+                <div class="flex items-center space-x-2 mb-4">
+                  <i data-lucide="filter" class="h-5 w-5 text-accent"></i>
+                  <h3 class="text-lg font-semibold">Filters</h3>
+                </div>
+
+                <div class="space-y-2">
+                  <label for="search-query" class="text-sm font-medium"
+                    >Search Cars</label
+                  >
+                  <div class="relative">
+                    <i
+                      data-lucide="search"
+                      class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50"
+                    ></i>
+                    <input
+                      id="search-query"
+                      type="text"
+                      placeholder="Search by name..."
+                      class="w-full pl-10 h-10 px-3 py-2 bg-background border border-muted/50 rounded-lg text-foreground focus:ring-accent focus:border-accent"
+                    />
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <label for="seater-filter" class="text-sm font-medium"
+                    >Seating Capacity</label
+                  >
+                  <select
+                    id="seater-filter"
+                    class="w-full h-10 px-3 py-2 bg-background border border-muted/50 rounded-lg text-foreground focus:ring-accent focus:border-accent"
+                  >
+                    <option value="all">All Seaters</option>
+                    <option value="4">4-Seater</option>
+                    <option value="5">5-Seater</option>
+                    <option value="7">7-Seater</option>
+                  </select>
+                </div>
+
+                <div class="space-y-2">
+                  <label class="text-sm font-medium">Price Range (₹/day)</label>
+                  <div class="pt-4">
+                    <div id="price-slider-track" class="slider-track mb-4">
+                      <div id="price-slider-range" class="slider-range"></div>
+                      <div
+                        id="price-slider-min-thumb"
+                        class="slider-thumb"
+                        data-value="0"
+                      ></div>
+                      <div
+                        id="price-slider-max-thumb"
+                        class="slider-thumb"
+                        data-value="10000"
+                      ></div>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span id="price-min-display" class="font-medium">₹0</span>
+                      <span id="price-max-display" class="font-medium"
+                        >₹10000</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  id="clear-filters-btn"
+                  class="w-full h-10 bg-background hover:bg-muted text-foreground border border-foreground/30 font-semibold rounded-lg transition-colors"
+                >
+                  Clear Filters
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-3">
+            <div class="mb-6">
+              <p class="text-foreground/70">
+                Showing
+                <span id="car-count" class="font-semibold text-accent">0</span>
+                cars
+              </p>
+              <div
+                id="trip-summary"
+                class="mt-2 hidden text-sm text-foreground/70"
+              ></div>
+            </div>
+
+            <div
+              id="cars-grid"
+              class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+            ></div>
+
+            <div id="no-cars-found" class="hidden">
+              <div class="bg-muted rounded-xl text-center py-12 shadow-card">
+                <div class="max-w-md mx-auto">
+                  <i
+                    data-lucide="search"
+                    class="h-16 w-16 mx-auto mb-4 text-foreground/50"
+                  ></i>
+                  <h3 class="text-xl font-semibold mb-2">No cars found</h3>
+                  <p class="text-foreground/70 mb-6">
+                    Try adjusting your filters or search query
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-[#0a2342] text-white py-10 mt-20">
+        <div class="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+          <div>
+            <h2 class="text-2xl font-bold">RentACar</h2>
+            <p class="mt-3 text-gray-300 text-sm leading-relaxed">
+              Your trusted car rental service for every journey. Safe, affordable, and reliable rides across India.
+            </p>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="#" class="hover:text-white transition">Home</a></li>
+              <li><a href="#" class="hover:text-white transition">About Us</a></li>
+              <li><a href="#" class="hover:text-white transition">Our Cars</a></li>
+              <li><a href="#" class="hover:text-white transition">Contact</a></li>
+            </ul>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Support</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+              <li><a href="#" class="hover:text-white transition">Booking Policy</a></li>
+              <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
+              <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+            </ul>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Contact Us</h3>
+            <p class="text-gray-300 text-sm">📍 Mumbai, India</p>
+            <p class="text-gray-300 text-sm">📞 +91 98765 43210</p>
+            <p class="text-gray-300 text-sm">✉️ support@rentacar.com</p>
+            
+            <div class="flex gap-4 mt-4">
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm">
+          © 2025 RentACar. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+      // --- Data Definitions ---
+      // STEP 2: Use the GLOBAL_CAR_DATA from the external file
+      const cars = GLOBAL_CAR_DATA;
+
+      const MAX_PRICE = 10000;
+      const MIN_PRICE = 0;
+
+      // --- State Management (Simulating React useState) ---
+      let searchQuery = "";
+      let seaterFilter = "all";
+      let priceRange = [MIN_PRICE, MAX_PRICE]; // [min, max]
+
+      // --- DOM Elements ---
+      const searchInput = document.getElementById("search-query");
+      const seaterSelect = document.getElementById("seater-filter");
+      const carsGrid = document.getElementById("cars-grid");
+      const carCountDisplay = document.getElementById("car-count");
+      const noCarsFound = document.getElementById("no-cars-found");
+      const clearFiltersBtn = document.getElementById("clear-filters-btn");
+
+      // Price Slider Elements (unchanged)
+      const minThumb = document.getElementById("price-slider-min-thumb");
+      const maxThumb = document.getElementById("price-slider-max-thumb");
+      const rangeElement = document.getElementById("price-slider-range");
+      const trackElement = document.getElementById("price-slider-track");
+      const minDisplay = document.getElementById("price-min-display");
+      const maxDisplay = document.getElementById("price-max-display");
+
+      // --- Filtering Logic ---
+      function filterCars() {
+        const filtered = cars.filter((car) => {
+          // 1. Search Query Filter
+          const searchLower = searchQuery.toLowerCase();
+          const matchesSearch =
+            car.name.toLowerCase().includes(searchLower) ||
+            car.category.toLowerCase().includes(searchLower);
+
+          // 2. Seating Filter
+          // Use car.specs.passengers from the unified data structure
+          const matchesSeater =
+            seaterFilter === "all" ||
+            car.specs.passengers === parseInt(seaterFilter);
+
+          // 3. Price Range Filter
+          const matchesPrice =
+            car.price >= priceRange[0] && car.price <= priceRange[1];
+
+          return matchesSearch && matchesSeater && matchesPrice;
+        });
+
+        renderCars(filtered);
+      }
+
+      // --- Rendering Functions ---
+
+      function renderCars(filteredList) {
+        carCountDisplay.textContent = filteredList.length;
+
+        if (filteredList.length === 0) {
+          carsGrid.classList.add("hidden");
+          noCarsFound.classList.remove("hidden");
+          return;
+        }
+
+        carsGrid.classList.remove("hidden");
+        noCarsFound.classList.add("hidden");
+
+        carsGrid.innerHTML = filteredList
+          .map(
+            (car) => `
+                <div 
+                    class="bg-muted rounded-xl overflow-hidden hover:shadow-sm transition-all hover:-translate-y-1 border border-accent/40"
+                >
+                    <div class="aspect-video bg-gradient-card relative overflow-hidden">
+                        <div class="absolute inset-0 bg-accent/5 flex items-center justify-center">
+                            <div class="text-center">
+                                <i data-lucide="gauge" class="h-16 w-16 text-accent/40 mx-auto mb-2"></i>
+                                <p class="text-sm text-foreground/70 font-medium">${
+                                  car.name
+                                }</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-3 right-3 bg-white/80 text-black/70 px-3 py-1.5 rounded-full shadow-lg">
+                            <span class="text-sm font-bold">₹${car.price.toLocaleString()}/day</span>
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                              car.available
+                                ? "bg-success text-white"
+                                : "bg-destructive text-white"
+                            }">
+                                ${car.available ? "Available" : "Booked"}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex-1">
+                                <h3 class="text-lg font-bold mb-1">${
+                                  car.name
+                                }</h3>
+                                <p class="text-xs text-foreground/70 mb-1">${
+                                  car.category
+                                }</p>
+                                <div class="flex items-center space-x-1 text-xs text-foreground/70">
+                                    <i data-lucide="map-pin" class="h-3 w-3 text-accent"></i>
+                                    <span>Available Everywhere</span> 
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1 bg-accent/20 px-2 py-1 rounded-full">
+                                <i data-lucide="star" class="h-3 w-3 fill-accent text-accent"></i>
+                                <span class="text-xs font-bold text-foreground">${
+                                  car.rating || "4.5"
+                                }</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-around text-xs text-foreground/70 mb-4 py-3 bg-background rounded-lg">
+                            <div class="flex flex-col items-center space-y-1">
+                                <i data-lucide="users" class="h-4 w-4 text-accent"></i>
+                                <span class="font-medium">${
+                                  car.specs.passengers
+                                } Seats</span>
+                            </div>
+                            <div class="flex flex-col items-center space-y-1">
+                                <i data-lucide="fuel" class="h-4 w-4 text-accent"></i>
+                                <span class="font-medium">${
+                                  car.specs.fuel
+                                }</span>
+                            </div>
+                            <div class="flex flex-col items-center space-y-1">
+                                <i data-lucide="gauge" class="h-4 w-4 text-accent"></i>
+                                <span class="font-medium">${car.specs.transmission.slice(
+                                  0,
+                                  4
+                                )}</span>
+                            </div>
+                        </div>
+
+                        <a href="car-details.html?id=${car.id}">
+                            <button
+                                class="w-full h-10 font-semibold rounded-lg transition-colors shadow-sm
+                                ${
+                                  car.available
+                                    ? "bg-accent hover:bg-accent/80 text-white"
+                                    : "bg-destructive/50 text-black/70 cursor-not-allowed"
+                                }"
+                                ${car.available ? "" : "disabled"}
+                            >
+                                ${
+                                  car.available
+                                    ? "View Details"
+                                    : "Currently Unavailable"
+                                }
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            `
+          )
+          .join("");
+
+        // Re-run Lucide to render icons in the new HTML
+        lucide.createIcons();
+      }
+
+      // --- Slider Implementation (Unchanged) ---
+      function updateSlider(newMin, newMax) {
+        priceRange = [newMin, newMax];
+
+        const minPercent =
+          ((newMin - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100;
+        const maxPercent =
+          ((newMax - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100;
+
+        minThumb.style.left = `${minPercent}%`;
+        maxThumb.style.left = `${maxPercent}%`;
+
+        rangeElement.style.left = `${minPercent}%`;
+        rangeElement.style.width = `${maxPercent - minPercent}%`;
+
+        minDisplay.textContent = `₹${newMin.toLocaleString()}`;
+        maxDisplay.textContent = `₹${newMax.toLocaleString()}`;
+
+        minThumb.setAttribute("data-value", newMin);
+        maxThumb.setAttribute("data-value", newMax);
+
+        filterCars();
+      }
+
+      function setupSliderDragging(thumb, isMinThumb) {
+        thumb.onmousedown = function (e) {
+          e.preventDefault();
+          let shiftX = e.clientX - thumb.getBoundingClientRect().left;
+
+          document.onmousemove = function (e) {
+            let newLeft =
+              e.clientX - shiftX - trackElement.getBoundingClientRect().left;
+            let trackWidth = trackElement.offsetWidth;
+            let position = (newLeft / trackWidth) * (MAX_PRICE - MIN_PRICE);
+
+            let newValue = Math.round(position / 500) * 500 + MIN_PRICE;
+            newValue = Math.max(MIN_PRICE, Math.min(MAX_PRICE, newValue));
+
+            const otherValue = isMinThumb ? priceRange[1] : priceRange[0];
+
+            if (isMinThumb) {
+              if (newValue <= otherValue - 500) {
+                updateSlider(newValue, otherValue);
+              } else if (newValue > otherValue - 500) {
+                updateSlider(otherValue - 500, otherValue);
+              }
+            } else {
+              if (newValue >= otherValue + 500) {
+                updateSlider(otherValue, newValue);
+              } else if (newValue < otherValue + 500) {
+                updateSlider(otherValue, otherValue + 500);
+              }
+            }
+          };
+
+          document.onmouseup = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+            filterCars();
+          };
+        };
+        thumb.ondragstart = function () {
+          return false;
+        };
+      }
+
+      // --- Event Handlers ---
+      function setupEventListeners() {
+        // Filter Inputs
+        searchInput.addEventListener("input", (e) => {
+          searchQuery = e.target.value;
+          filterCars();
+        });
+
+        seaterSelect.addEventListener("change", (e) => {
+          seaterFilter = e.target.value;
+          filterCars();
+        });
+
+        // Clear Filters Button
+        clearFiltersBtn.addEventListener("click", () => {
+          // Reset State
+          searchQuery = "";
+          seaterFilter = "all";
+          priceRange = [MIN_PRICE, MAX_PRICE];
+
+          // Reset DOM elements
+          searchInput.value = "";
+          seaterSelect.value = "all";
+
+          // Reset Slider
+          updateSlider(MIN_PRICE, MAX_PRICE);
+
+          filterCars();
+        });
+
+        // Setup Slider Dragging
+        setupSliderDragging(minThumb, true);
+        setupSliderDragging(maxThumb, false);
+      }
+
+      // --- Initialization ---
+      document.addEventListener("DOMContentLoaded", () => {
+        setupEventListeners();
+        updateSlider(MIN_PRICE, MAX_PRICE); // Initialize slider and first render
+        lucide.createIcons(); // Renders all initial icons
+
+        // Read query params coming from Home.html and prefill filters/summary
+
+        const params = new URLSearchParams(window.location.search);
+        const q = params.get("q");
+        if (q) {
+          searchQuery = q;
+          if (searchInput) {
+            searchInput.value = q;
+          }
+        }
+
+        const pickupLocation = params.get("pickupLocation");
+        const dropoffLocation = params.get("dropoffLocation");
+        const pickupDate = params.get("pickupDate");
+        const dropoffDate = params.get("dropoffDate");
+        const pickupTime = params.get("pickupTime");
+        const dropoffTime = params.get("dropoffTime");
+
+        const tripSummaryEl = document.getElementById("trip-summary");
+        const hasTrip =
+          pickupLocation ||
+          dropoffLocation ||
+          pickupDate ||
+          dropoffDate ||
+          pickupTime ||
+          dropoffTime;
+        if (tripSummaryEl && hasTrip) {
+          const fromTo = [pickupLocation, dropoffLocation]
+            .filter(Boolean)
+            .join(" → ");
+          const dates = [pickupDate, dropoffDate].filter(Boolean).join(" to ");
+          const times = [pickupTime, dropoffTime].filter(Boolean).join(" to ");
+          const parts = [];
+          if (fromTo) parts.push(fromTo);
+          if (dates) parts.push(dates);
+          if (times) parts.push(times);
+          tripSummaryEl.textContent = `Trip: ${parts.join(" • ")}`;
+          tripSummaryEl.classList.remove("hidden");
+        }
+
+        // Apply filters once with any prefilled search
+        filterCars();
+      });
+    </script>
+  </body>
+</html

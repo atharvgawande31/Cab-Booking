@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Header -->
+  <div class="bg-gray-200 py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center space-x-2 text-sm mb-4">
+        <a href="#" class="text-gray-500 hover:text-gray-800">Home</a>
+        <span class="text-gray-400">/</span>
+        <a href="#" class="text-gray-500 hover:text-gray-800">Cars</a>
+        <span class="text-gray-400">/</span>
+        <a href="#" class="text-gray-500 hover:text-gray-800">Booking</a>
+        <span class="text-gray-400">/</span>
+        <span class="text-gray-800 font-medium">Payment</span>
+      </div>
+      <h1 class="text-3xl font-bold">Secure Payment</h1>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <a href="#" class="inline-flex items-center mb-6 px-4 py-2 border rounded hover:bg-gray-100">
+      ← Back to Booking
+    </a>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- Payment Form -->
+      <div class="lg:col-span-2 space-y-6">
+        <form id="paymentForm" class="space-y-6">
+
+          <!-- Payment Method -->
+          <div class="border rounded-lg p-4">
+            <h2 class="flex items-center text-lg font-semibold mb-4">
+              💳 Payment Method
+            </h2>
+            <div class="space-y-4">
+              <label class="flex items-center space-x-2 p-4 border rounded cursor-pointer">
+                <input type="radio" name="paymentMethod" value="card" checked class="form-radio" />
+                <span>Credit / Debit Card</span>
+              </label>
+              <label class="flex items-center space-x-2 p-4 border rounded opacity-50 cursor-not-allowed">
+                <input type="radio" name="paymentMethod" value="paypal" disabled class="form-radio" />
+                <span>PayPal</span>
+                <span class="ml-2 bg-gray-300 text-gray-700 px-2 py-0.5 rounded text-xs">Coming Soon</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Card Details -->
+          <div id="cardDetails" class="border rounded-lg p-4">
+            <h2 class="text-lg font-semibold mb-4">Card Information</h2>
+
+            <div class="space-y-4">
+              <div>
+                <label for="cardNumber" class="block mb-1">Card Number</label>
+                <input type="text" id="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456" class="w-full border rounded px-3 py-2" required>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="expiry" class="block mb-1">Expiry Date</label>
+                  <input type="text" id="expiry" maxlength="5" placeholder="MM/YY" class="w-full border rounded px-3 py-2" required>
+                </div>
+                <div>
+                  <label for="cvv" class="block mb-1">CVV</label>
+                  <input type="text" id="cvv" maxlength="4" placeholder="123" class="w-full border rounded px-3 py-2" required>
+                </div>
+              </div>
+
+              <div>
+                <label for="cardName" class="block mb-1">Cardholder Name</label>
+                <input type="text" id="cardName" placeholder="John Doe" class="w-full border rounded px-3 py-2" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Billing Address -->
+          <div class="border rounded-lg p-4">
+            <h2 class="text-lg font-semibold mb-4">Billing Address</h2>
+            <div class="space-y-4">
+              <div>
+                <label for="billingAddress" class="block mb-1">Street Address</label>
+                <input type="text" id="billingAddress" placeholder="123 Main Street" class="w-full border rounded px-3 py-2" required>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="city" class="block mb-1">City</label>
+                  <input type="text" id="city" placeholder="Los Angeles" class="w-full border rounded px-3 py-2" required>
+                </div>
+                <div>
+                  <label for="zip" class="block mb-1">ZIP Code</label>
+                  <input type="text" id="zip" placeholder="90210" class="w-full border rounded px-3 py-2" required>
+                </div>
+              </div>
+              <div>
+                <label for="country" class="block mb-1">Country</label>
+                <select id="country" class="w-full border rounded px-3 py-2" required>
+                  <option value="">Select country</option>
+                  <option value="us">United States</option>
+                  <option value="ca">Canada</option>
+                  <option value="uk">United Kingdom</option>
+                  <option value="au">Australia</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security Notice -->
+          <div class="border-l-4 border-green-500 bg-green-100 p-4 flex items-center space-x-3">
+            <span>🛡️</span>
+            <div>
+              <h4 class="font-medium text-green-700">Secure Payment</h4>
+              <p class="text-sm text-green-900">Your payment information is encrypted and secure. We never store your card details.</p>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="w-full bg-blue-600 text-white py-3 font-semibold rounded hover:opacity-90">
+            🔒 Complete Payment - $500.25
+          </button>
+        </form>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="lg:col-span-1 space-y-6">
+        <div class="border rounded-lg p-4 sticky top-6 bg-white">
+          <h2 class="text-lg font-semibold mb-4">Order Summary</h2>
+
+          <!-- Car Details -->
+          <div class="space-y-2">
+            <div class="h-40 bg-gradient-to-r from-blue-100 to-blue-200 rounded-lg flex items-center justify-center text-center">
+              <div>
+                <p class="font-semibold text-gray-700">BMW X5</p>
+                <p class="text-sm text-gray-500">Luxury SUV</p>
+              </div>
+            </div>
+            <div class="flex justify-between text-sm text-gray-600 mt-2">
+              <span>Passengers: 5</span>
+              <span>Fuel: Petrol</span>
+              <span>Transmission: Auto</span>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <!-- Rental Details -->
+          <div class="space-y-2 text-sm text-gray-600">
+            <div>
+              <strong>Pickup:</strong> Downtown Los Angeles
+            </div>
+            <div>
+              <strong>Dropoff:</strong> LAX Airport
+            </div>
+            <div>
+              <strong>Dates:</strong> 02/15/2024 - 02/18/2024 (3 days)
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <!-- Pricing -->
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between"><span>Car Rental</span><span>$360</span></div>
+            <div class="flex justify-between"><span>Insurance</span><span>$75</span></div>
+            <div class="flex justify-between"><span>Taxes & Fees</span><span>$65.25</span></div>
+          </div>
+
+          <hr class="my-4">
+
+          <div class="flex justify-between font-semibold text-lg">
+            <span>Total</span>
+            <span>$500.25</span>
+          </div>
+
+          <div class="bg-gray-100 p-3 rounded mt-4 text-sm text-gray-600">
+            🛡️ Secure Payment<br>
+            • SSL encrypted payment<br>
+            • No hidden fees<br>
+            • Free cancellation up to 24h
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
+    const cardDetails = document.getElementById('cardDetails');
+
+    paymentRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (radio.value === 'card') {
+          cardDetails.style.display = 'block';
+        } else {
+          cardDetails.style.display = 'none';
+        }
+      });
+    });
+
+    // Card number formatting
+    const cardInput = document.getElementById('cardNumber');
+    cardInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '').substring(0,16);
+      value = value.match(/.{1,4}/g)?.join(' ') || value;
+      e.target.value = value;
+    });
+
+    // Expiry date formatting
+    const expiryInput = document.getElementById('expiry');
+    expiryInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g,'').substring(0,4);
+      if(value.length >= 3){
+        value = value.substring(0,2) + '/' + value.substring(2,4);
+      }
+      e.target.value = value;
+    });
+
+    // Form submit
+    document.getElementById('paymentForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Payment completed! Redirecting to confirmation...');
+      window.location.href = '/booking-confirmation.html';
+    });
+  </script>
+</body>
+</html>

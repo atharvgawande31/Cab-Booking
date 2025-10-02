@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - Car Rentals</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* --- Root Variables: Light Mode Theme --- */
+        :root {
+            --primary: 222.2 47.4% 11.2%; /* Near Black */
+            --accent: 210 100% 50%; /* Vibrant Blue */
+            --background: 0 0% 100%; /* White */
+            --foreground: 222.2 47.4% 11.2%; 
+            --muted: 210 40% 96.1%; /* Very Light Gray */
+            --secondary: 210 40% 96.1%; 
+            --success: 142 71% 45%; /* Green */
+            --warning: 38 92% 50%; /* Amber/Yellow */
+            --destructive: 0 84.2% 60.2%; /* Red */
+            --border: 214.3 31.8% 91.4%; 
+        }
+
+        /* Utility Classes */
+        .text-accent { color: hsl(var(--accent)); }
+        .bg-accent { background-color: hsl(var(--accent)); }
+        .text-primary { color: hsl(var(--primary)); }
+        .bg-gradient-primary { background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent)/80) 100%); }
+        .bg-gradient-card { background: linear-gradient(135deg, hsl(var(--muted)) 0%, hsl(var(--background)) 100%); }
+        .text-muted-foreground { color: hsla(var(--foreground), 0.6); }
+        .bg-background { background-color: hsl(var(--background)); }
+        .text-foreground { color: hsl(var(--foreground)); }
+        .text-success { color: hsl(var(--success)); }
+        .text-destructive { color: hsl(var(--destructive)); }
+        .bg-success { background-color: hsl(var(--success)); }
+        .bg-warning { background-color: hsl(var(--warning)); }
+        .bg-destructive { background-color: hsl(var(--destructive)); }
+        .text-white { color: white; }
+
+        /* Component Simulation */
+        .card { background-color: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: 0.5rem; }
+        .shadow-card { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); }
+        .hover\:shadow-elegant:hover { box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); }
+        .badge { display: inline-flex; padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+        
+        /* Tabs Simulation */
+        .tabs-list { background-color: hsl(var(--muted)); border-radius: 0.5rem; padding: 0.25rem; }
+        .tabs-trigger {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: hsl(var(--foreground) / 0.7);
+            transition: all 0.2s;
+        }
+        .tabs-trigger.active {
+            background-color: hsl(var(--background));
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            color: hsl(var(--foreground));
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground">
+    <!-- Optional: Navbar Placeholder -->
+    <header id="navbar-placeholder" class="sticky top-0 z-40"></header>
+
+    <div class="min-h-screen">
+        <!-- Header -->
+        <section class="bg-gradient-primary text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">My Bookings</h1>
+                    <p class="text-xl text-white/90 max-w-2xl mx-auto">
+                        Manage and track all your car rental bookings
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Booking Tabs -->
+            <div id="booking-tabs" class="space-y-6">
+                <div id="tabs-list" class="tabs-list grid w-full grid-cols-4">
+                    <!-- Tabs will be rendered here -->
+                </div>
+
+                <div id="tabs-content" class="space-y-6">
+                    <!-- Booking cards will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Optional: Footer Placeholder -->
+    <footer class="bg-[#0a2342] text-white py-10 mt-20">
+        <div class="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+          <div>
+            <h2 class="text-2xl font-bold">RentACar</h2>
+            <p class="mt-3 text-gray-300 text-sm leading-relaxed">
+              Your trusted car rental service for every journey. Safe, affordable, and reliable rides across India.
+            </p>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="#" class="hover:text-white transition">Home</a></li>
+              <li><a href="#" class="hover:text-white transition">About Us</a></li>
+              <li><a href="#" class="hover:text-white transition">Our Cars</a></li>
+              <li><a href="#" class="hover:text-white transition">Contact</a></li>
+            </ul>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Support</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+              <li><a href="#" class="hover:text-white transition">Booking Policy</a></li>
+              <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
+              <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+            </ul>
+          </div>
+        
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Contact Us</h3>
+            <p class="text-gray-300 text-sm">📍 Mumbai, India</p>
+            <p class="text-gray-300 text-sm">📞 +91 98765 43210</p>
+            <p class="text-gray-300 text-sm">✉️ support@rentacar.com</p>
+            
+            <div class="flex gap-4 mt-4">
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm">
+          © 2025 RentACar. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // --- Data ---
+        // Status keys for filtering
+        const TABS = ["all", "confirmed", "completed", "cancelled"];
+
+        // Mock bookings data (use EUR/USD for display consistency with input code)
+        const MOCK_BOOKINGS = [
+            {
+                id: "BK-001",
+                status: "confirmed",
+                car: {
+                    name: "Maruti Suzuki Ertiga",
+                    category: "7-Seater MUV",
+                    specs: { passengers: 7, fuel: "Petrol", transmission: "Manual" }
+                },
+                rental: {
+                    pickupLocation: "Mumbai Airport",
+                    dropoffLocation: "Pune City",
+                    pickupDate: "2024-11-15",
+                    pickupTime: "10:00",
+                    dropoffDate: "2024-11-18",
+                    dropoffTime: "14:00",
+                    days: 3
+                },
+                pricing: { total: 10500.25 }, // Total in INR
+                bookingDate: "2024-11-10"
+            },
+            {
+                id: "BK-002",
+                status: "completed",
+                car: {
+                    name: "Hyundai Creta",
+                    category: "5-Seater SUV",
+                    specs: { passengers: 5, fuel: "Petrol", transmission: "Automatic" }
+                },
+                rental: {
+                    pickupLocation: "Bangalore Tech Park",
+                    dropoffLocation: "Bangalore Airport",
+                    pickupDate: "2024-09-20",
+                    pickupTime: "09:00",
+                    dropoffDate: "2024-09-25",
+                    dropoffTime: "15:00",
+                    days: 5
+                },
+                pricing: { total: 15500.00 },
+                bookingDate: "2024-09-15"
+            },
+            {
+                id: "BK-003",
+                status: "cancelled",
+                car: {
+                    name: "Audi A4",
+                    category: "Luxury Sedan",
+                    specs: { passengers: 4, fuel: "Petrol", transmission: "Automatic" }
+                },
+                rental: {
+                    pickupLocation: "Delhi Aerocity",
+                    dropoffLocation: "Agra Fort",
+                    pickupDate: "2025-01-10",
+                    pickupTime: "12:00",
+                    dropoffDate: "2025-01-12",
+                    dropoffTime: "16:00",
+                    days: 2
+                },
+                pricing: { total: 16000.00 },
+                bookingDate: "2024-12-05"
+            },
+            {
+                id: "BK-004",
+                status: "pending",
+                car: {
+                    name: "Tata Nexon",
+                    category: "Compact SUV",
+                    specs: { passengers: 5, fuel: "Diesel", transmission: "Manual" }
+                },
+                rental: {
+                    pickupLocation: "Hyderabad Jubilee Hills",
+                    dropoffLocation: "Hyderabad Jubilee Hills",
+                    pickupDate: "2024-12-01",
+                    dropoffDate: "2024-12-02",
+                    days: 1
+                },
+                pricing: { total: 3500.00 },
+                bookingDate: "2024-11-20"
+            }
+        ];
+
+        // --- State Management (Simulating React useState) ---
+        let activeTab = "all";
+        const tabsListElement = document.getElementById('tabs-list');
+        const tabsContentElement = document.getElementById('tabs-content');
+
+        // --- Helper Functions ---
+
+        const getStatusIcon = (status) => {
+            const iconMap = {
+                "confirmed": "check-circle text-success",
+                "completed": "check-circle text-success",
+                "cancelled": "x-circle text-destructive",
+                "pending": "alert-circle text-warning",
+                "default": "clock text-muted-foreground"
+            };
+            const iconClass = iconMap[status] || iconMap['default'];
+            return `<i data-lucide="${iconClass.split(' ')[0]}" class="h-4 w-4 ${iconClass.split(' ')[1] || ''}"></i>`;
+        };
+
+        const getStatusBadge = (status) => {
+            const badgeMap = {
+                "confirmed": "bg-success text-white",
+                "completed": "bg-success text-white",
+                "cancelled": "bg-destructive text-white",
+                "pending": "bg-warning text-primary",
+                "default": "bg-muted text-muted-foreground"
+            };
+            const textMap = {
+                "confirmed": "Confirmed",
+                "completed": "Completed",
+                "cancelled": "Cancelled",
+                "pending": "Pending",
+                "default": status
+            };
+            const badgeClass = badgeMap[status] || badgeMap['default'];
+            const text = textMap[status] || textMap['default'];
+
+            return `<span class="badge ${badgeClass}">${text}</span>`;
+        };
+
+        const formatDate = (dateString) => {
+            if (!dateString) return 'N/A';
+            return new Date(dateString).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' });
+        };
+
+        // --- Rendering Logic ---
+
+        function handleTabChange(tab) {
+            activeTab = tab;
+            renderTabs();
+            renderBookings();
+        }
+
+        function renderTabs() {
+            tabsListElement.innerHTML = TABS.map(tab => {
+                const label = tab.charAt(0).toUpperCase() + tab.slice(1);
+                const isActive = tab === activeTab;
+                return `
+                    <button 
+                        class="tabs-trigger ${isActive ? 'active' : ''}" 
+                        onclick="handleTabChange('${tab}')"
+                    >
+                        ${label} ${tab === 'all' ? 'Bookings' : ''}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function renderBookings() {
+            const filteredBookings = activeTab === "all"
+                ? MOCK_BOOKINGS
+                : MOCK_BOOKINGS.filter(booking => booking.status === activeTab);
+
+            if (filteredBookings.length === 0) {
+                tabsContentElement.innerHTML = `
+                    <div class="card p-4">
+                        <div class="text-center py-12">
+                            <div class="max-w-md mx-auto">
+                                <i data-lucide="calendar" class="h-16 w-16 mx-auto mb-4 text-muted-foreground"></i>
+                                <h3 class="text-xl font-semibold mb-2">No bookings found</h3>
+                                <p class="text-muted-foreground mb-6">
+                                    ${activeTab === "all"
+                                        ? "You haven't made any bookings yet."
+                                        : `No ${activeTab} bookings found.`}
+                                </p>
+                                <a href="cars.html">
+                                    <button class="h-10 px-4 py-2 bg-accent text-white rounded-lg font-semibold hover:bg-accent/90 transition">
+                                        Browse Cars
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            tabsContentElement.innerHTML = filteredBookings.map(booking => {
+                const isCancellable = booking.status === "confirmed" && new Date(booking.rental.pickupDate) > new Date(); // Mock check
+                const isCompleted = booking.status === "completed";
+                const isConfirmed = booking.status === "confirmed";
+
+                return `
+                    <div class="card p-0 shadow-card hover:shadow-elegant transition-shadow">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    ${getStatusIcon(booking.status)}
+                                    <div>
+                                        <h3 class="text-lg font-semibold">Booking #${booking.id}</h3>
+                                        <p class="text-sm text-muted-foreground">
+                                            Booked on ${formatDate(booking.bookingDate)}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    ${getStatusBadge(booking.status)}
+                                    <span class="text-xl font-bold text-primary">
+                                        ₹${booking.pricing.total.toLocaleString('en-IN')}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 border-t border-border">
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                                
+                                <!-- Car Details -->
+                                <div class="space-y-3">
+                                    <h4 class="font-semibold text-primary">Vehicle</h4>
+                                    <div class="aspect-video bg-gradient-card rounded-lg relative flex items-center justify-center">
+                                        <i data-lucide="car" class="h-12 w-12 text-muted-foreground"></i>
+                                    </div>
+                                    <h3 class="font-semibold text-base">${booking.car.name}</h3>
+                                    <div class="flex justify-between text-xs text-muted-foreground">
+                                        <span><i data-lucide="users" class="h-3 w-3 inline mr-1"></i> ${booking.car.specs.passengers} Seats</span>
+                                        <span><i data-lucide="fuel" class="h-3 w-3 inline mr-1"></i> ${booking.car.specs.fuel}</span>
+                                        <span><i data-lucide="gauge" class="h-3 w-3 inline mr-1"></i> ${booking.car.specs.transmission.slice(0, 4)}</span>
+                                    </div>
+                                </div>
+
+                                <!-- Rental Details -->
+                                <div class="space-y-3">
+                                    <h4 class="font-semibold text-primary">Rental Details (${booking.rental.days} Days)</h4>
+                                    <div class="text-sm space-y-2">
+                                        <div class="flex items-start space-x-2">
+                                            <i data-lucide="map-pin" class="h-4 w-4 text-accent mt-0.5"></i>
+                                            <div>
+                                                <div class="font-medium">${booking.rental.pickupLocation}</div>
+                                                <div class="text-muted-foreground">${formatDate(booking.rental.pickupDate)} at ${booking.rental.pickupTime}</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start space-x-2">
+                                            <i data-lucide="map-pin" class="h-4 w-4 text-accent mt-0.5"></i>
+                                            <div>
+                                                <div class="font-medium">${booking.rental.dropoffLocation}</div>
+                                                <div class="text-muted-foreground">${formatDate(booking.rental.dropoffDate)} at ${booking.rental.dropoffTime}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Actions -->
+                                <div class="space-y-3 pt-2 lg:pt-0 border-t lg:border-t-0 lg:border-l border-border lg:pl-6">
+                                    <h4 class="font-semibold text-primary">Options</h4>
+                                    <a href="#" onclick="alert('Downloading receipt for ${booking.id}')">
+                                        <button class="w-full h-10 button-outline justify-start hover:bg-muted text-primary">
+                                            <i data-lucide="download" class="h-4 w-4 mr-2"></i>
+                                            Download Receipt
+                                        </button>
+                                    </a>
+                                    
+                                    ${(isConfirmed || isCompleted) ? `
+                                    <a href="#" onclick="alert('Opening support chat for ${booking.id}')">
+                                        <button class="w-full h-10 button-outline justify-start hover:bg-muted text-primary">
+                                            <i data-lucide="message-circle" class="h-4 w-4 mr-2"></i>
+                                            Contact Support
+                                        </button>
+                                    </a>` : ''}
+
+                                    ${isConfirmed && isCancellable ? `
+                                    <a href="#" onclick="alert('Cancellation confirmed for ${booking.id}. Refund processing.')">
+                                        <button class="w-full h-10 button-outline justify-start text-destructive hover:bg-destructive/10 border-destructive/50">
+                                            <i data-lucide="x-circle" class="h-4 w-4 mr-2"></i>
+                                            Cancel Booking
+                                        </button>
+                                    </a>` : ''}
+                                    
+                                    ${isCompleted ? `
+                                    <a href="#" onclick="alert('Redirecting to review form for ${booking.id}')">
+                                        <button class="w-full h-10 button-outline justify-start bg-accent text-white hover:bg-accent/90">
+                                            <i data-lucide="star" class="h-4 w-4 mr-2"></i>
+                                            Leave Review
+                                        </button>
+                                    </a>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            lucide.createIcons(); // Re-render Lucide icons after injecting HTML
+        }
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Optional: Call navbar/footer functions if included in the same file
+            // if (typeof renderNavbar === 'function') renderNavbar();
+            // if (typeof renderFooter === 'function') renderFooter();
+
+            // Set up initial view
+            renderTabs();
+            renderBookings();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

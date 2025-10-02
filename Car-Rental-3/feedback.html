@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script>
+    function submitFeedback(e) {
+      e.preventDefault();
+      const name = document.getElementById('fbName').value;
+      const text = document.getElementById('fbText').value;
+      const li = document.createElement('li');
+      li.innerHTML = `<b>${name}:</b> ${text}`;
+      document.getElementById('reviews').prepend(li);
+      document.getElementById('feedbackForm').reset();
+    }
+  </script>
+</head>
+<body style="background: #232526;">
+  <nav class="navbar navbar-dark bg-dark"><a class="navbar-brand" href="index.html">Auto Services</a></nav>
+  <div class="container mt-5">
+    <h2 class="text-warning mb-4">Customer Feedback & Reviews</h2>
+    <form id="feedbackForm" onsubmit="submitFeedback(event)">
+      <input type="text" class="form-control mb-2" id="fbName" placeholder="Your Name" required>
+      <textarea class="form-control mb-2" id="fbText" rows="2" placeholder="Your Feedback" required></textarea>
+      <button class="btn btn-success">Submit Feedback</button>
+    </form>
+    <ul class="list-unstyled mt-3" id="reviews"></ul>
+  </div>
+</body>
+</html>
