@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - RentACar</title>
+    <link rel="stylesheet" href="style.css"> 
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Placeholder styles for theme consistency, relying on external style.css for variables */
+        .text-accent { color: hsl(var(--accent)); }
+        .text-primary { color: hsl(var(--primary)); }
+        .bg-gradient-primary { background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent)/80) 100%); }
+        .bg-secondary\/30 { background-color: hsla(var(--secondary), 0.7); }
+        .card { border: 1px solid hsl(var(--border)); border-radius: 0.5rem; }
+        .shadow-card { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); }
+    </style>
+</head>
+<body class="bg-background text-foreground">
+
+    <header id="navbar-placeholder" class="sticky top-0 z-40"></header>
+
+    <div class="min-h-screen">
+        
+        <section class="bg-gradient-primary text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Commitment to Your Journey</h1>
+                    <p class="text-xl text-white/90 max-w-3xl mx-auto">
+                        Learn how RentACar became India's most trusted choice for reliable travel.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+                
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold text-primary">Our Story & Mission</h2>
+                    <p class="text-lg text-muted-foreground">
+                        Founded in **2015**, **RentACar** was created with a simple mission: to provide transparent, safe, and easily accessible car rentals across all major Indian metropolitan areas. We understand that travel in India demands reliability, flexibility, and **trust**.
+                    </p>
+                    <p class="text-muted-foreground">
+                        We started with a small fleet of reliable sedans in Mumbai and have since expanded to over **25 cities**, featuring everything from economic hatchbacks to luxury 7-seater SUVs. Our commitment remains the same: to **put the driver first**.
+                    </p>
+                    <a href="cars.html">
+                        <button class="px-6 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-accent/90 transition duration-150 ease-in-out shadow-lg mt-4">
+                            Explore Our Fleet
+                        </button>
+                    </a>
+                </div>
+
+                <div class="bg-secondary/30 p-8 rounded-xl shadow-lg flex justify-center items-center h-full min-h-[300px]">
+                    <i data-lucide="map" class="h-16 w-16 text-accent mx-auto mb-4"></i>
+                    <p class="absolute text-center text-muted-foreground">Regional presence visualization placeholder</p>
+                </div>
+            </div>
+            
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-primary mb-10">Why Travelers Trust RentACar</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    
+                    <div class="card p-6 shadow-card">
+                        <i data-lucide="gauge" class="h-10 w-10 text-accent mx-auto mb-3"></i>
+                        <div class="text-3xl font-bold text-primary">25+</div>
+                        <p class="text-muted-foreground">Cities Served</p>
+                    </div>
+                    
+                    <div class="card p-6 shadow-card">
+                        <i data-lucide="users" class="h-10 w-10 text-accent mx-auto mb-3"></i>
+                        <div class="text-3xl font-bold text-primary">1M+</div>
+                        <p class="text-muted-foreground">Happy Customers</p>
+                    </div>
+                    
+                    <div class="card p-6 shadow-card">
+                        <i data-lucide="shield-check" class="h-10 w-10 text-accent mx-auto mb-3"></i>
+                        <div class="text-3xl font-bold text-primary">99.9%</div>
+                        <p class="text-muted-foreground">Safety Record</p>
+                    </div>
+                    
+                    <div class="card p-6 shadow-card">
+                        <i data-lucide="star" class="h-10 w-10 text-accent mx-auto mb-3"></i>
+                        <div class="text-3xl font-bold text-primary">4.8/5</div>
+                        <p class="text-muted-foreground">Average Rating</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                 <h2 class="text-3xl font-bold text-primary mb-10">Meet the Team</h2>
+                 <p class="text-muted-foreground max-w-3xl mx-auto">
+                     Our dedicated team ensures every aspect of your rental is flawless, from the moment you book to the moment you drop off the keys.
+                 </p>
+                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+                     <div class="card p-4 shadow-card">
+                         <i data-lucide="user-circle" class="h-16 w-16 text-primary mx-auto mb-2"></i>
+                         <h4 class="font-semibold">Priya Sharma</h4>
+                         <p class="text-xs text-accent">CEO & Founder</p>
+                     </div>
+                      <div class="card p-4 shadow-card">
+                         <i data-lucide="user-circle" class="h-16 w-16 text-primary mx-auto mb-2"></i>
+                         <h4 class="font-semibold">Rajesh Singh</h4>
+                         <p class="text-xs text-accent">Head of Operations</p>
+                     </div>
+                      <div class="card p-4 shadow-card">
+                         <i data-lucide="user-circle" class="h-16 w-16 text-primary mx-auto mb-2"></i>
+                         <h4 class="font-semibold">Neha Patel</h4>
+                         <p class="text-xs text-accent">Customer Support Lead</p>
+                     </div>
+                      <div class="card p-4 shadow-card">
+                         <i data-lucide="user-circle" class="h-16 w-16 text-primary mx-auto mb-2"></i>
+                         <h4 class="font-semibold">Vikram Reddy</h4>
+                         <p class="text-xs text-accent">Fleet Manager</p>
+                     </div>
+                 </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="bg-[#0a2342] text-white py-10 mt-20">
+        <div
+          class="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-8"
+        >
+          <div>
+            <h2 class="text-2xl font-bold">RentACar</h2>
+            <p class="mt-3 text-gray-300 text-sm leading-relaxed">
+              Your trusted car rental service for every journey. Safe, affordable,
+              and reliable rides across India.
+            </p>
+          </div>
+  
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <a
+                  href="index.html"
+                  class="hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html" class="hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="cars.html"
+                  class="hover:text-white transition"
+                  >Our Cars</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+  
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Support</h3>
+            <ul class="space-y-2 text-gray-300">
+      
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Booking Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Terms & Conditions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+  
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Contact Us</h3>
+            <p class="text-gray-300 text-sm">📍 Mumbai, India</p>
+            <p class="text-gray-300 text-sm">📞 +91 98765 43210</p>
+            <p class="text-gray-300 text-sm">✉️ support@rentacar.com</p>
+          </div>
+        </div>
+  
+        <div
+          class="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm"
+        >
+          © 2025 RentACar. All rights reserved.
+        </div>
+      </footer>
+    
+    <script>
+        // --- REUSABLE UI COMPONENT RENDERING FUNCTIONS (NAVBAR & FOOTER) ---
+        
+        // Ensure you copy these two functions and the document.addEventListener block
+        // into all your HTML files for consistent header/footer injection.
+
+        function renderNavbar() {
+            const navbarHtml = `
+                <nav class="bg-white shadow-md">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex justify-between items-center h-16">
+                            
+                            <div class="flex-shrink-0">
+                                <a href="index.html" class="text-2xl font-bold text-primary flex items-center">
+                                    <i data-lucide="car-front" class="h-6 w-6 text-accent mr-2"></i>
+                                    RentACar
+                                </a>
+                            </div>
+
+                            <div class="hidden md:flex md:items-center md:space-x-8">
+                                <a href="index.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                                    Home
+                                </a>
+                                <a href="cars.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                                    Our Fleet
+                                </a>
+                                <a href="about.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                                    About Us
+                                </a>
+                                <a href="contact.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
+                                    Contact
+                                </a>
+                            </div>
+
+                            <div class="hidden md:flex md:items-center md:space-x-4">
+                                <a href="auth.html" class="h-9 px-4 py-2 bg-accent text-white rounded-lg font-semibold hover:bg-accent/90 transition duration-150 ease-in-out shadow-md">
+                                    Get Started
+                                </a>
+                            </div>
+
+                            <div class="flex md:hidden">
+                                <button id="mobile-menu-btn" class="text-primary hover:text-accent">
+                                    <i data-lucide="menu" class="h-6 w-6"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-muted">
+                        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Home</a>
+                            <a href="cars.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Our Fleet</a>
+                            <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">About Us</a>
+                            <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Contact</a>
+                            
+                            <div class="pt-4 space-y-2 border-t border-muted">
+                                <a href="auth.html">
+                                    <button class="w-full h-10 px-4 py-2 text-center bg-accent text-white rounded-lg font-semibold hover:bg-accent/90 transition">
+                                        Get Started
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            `;
+
+            document.getElementById('navbar-placeholder').innerHTML = navbarHtml;
+            
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                });
+            }
+        }
+
+        function renderFooter() {
+            const footerHtml = `
+                <div class="bg-[#0a2342] text-white py-10">
+                    <div class="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-8">
+                    
+                        <div>
+                            <h2 class="text-2xl font-bold">RentACar</h2>
+                            <p class="mt-3 text-gray-300 text-sm leading-relaxed">
+                                Your trusted car rental service for every journey. Safe, affordable, and reliable rides across India.
+                            </p>
+                        </div>
+                    
+                        <div>
+                            <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+                            <ul class="space-y-2 text-gray-300">
+                                <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                                <li><a href="cars.html" class="hover:text-white transition">Our Fleet</a></li>
+                                <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                                <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                            </ul>
+                        </div>
+                    
+                        <div>
+                            <h3 class="text-lg font-semibold mb-3">Support</h3>
+                            <ul class="space-y-2 text-gray-300">
+                                <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+                                <li><a href="legal.html#terms" class="hover:text-white transition">Terms & Conditions</a></li>
+                                <li><a href="legal.html#privacy" class="hover:text-white transition">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    
+                        <div>
+                            <h3 class="text-lg font-semibold mb-3">Contact Us</h3>
+                            <p class="text-gray-300 text-sm">📍 Mumbai, India</p>
+                            <p class="text-gray-300 text-sm">📞 +91 98765 43210</p>
+                            <p class="text-gray-300 text-sm">✉️ support@rentacar.com</p>
+                            
+                            <div class="flex gap-4 mt-4">
+                                <a href="#" class="text-gray-300 hover:text-white text-xl"><i data-lucide="instagram" class="h-6 w-6"></i></a>
+                                <a href="#" class="text-gray-300 hover:text-white text-xl"><i data-lucide="twitter" class="h-6 w-6"></i></a>
+                                <a href="#" class="text-gray-300 hover:text-white text-xl"><i data-lucide="facebook" class="h-6 w-6"></i></a>
+                                <a href="#" class="text-gray-300 hover:text-white text-xl"><i data-lucide="linkedin" class="h-6 w-6"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm">
+                        © 2025 RentACar. All rights reserved.
+                    </div>
+                </div>
+            `;
+            document.getElementById('footer-placeholder').innerHTML = footerHtml;
+        }
+
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render the reusable components
+            renderNavbar();
+            renderFooter();
+            
+            // Render icons for the whole page
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

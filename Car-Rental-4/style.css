@@ -2,7 +2,7 @@
     /* 1. FONT IMPORT (Poppins) - Correct CSS @import Rule */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-    /* 2. ROOT VARIABLES (Unified Light Mode Theme) */
+
     :root {
         /* Base Colors (Based on ShadCN Light Mode values) */
         --background: 0 0% 100%; /* White */
@@ -34,7 +34,7 @@
         color: hsl(var(--foreground));
     }
 
-    /* 4. UTILITY CLASSES (Consolidated for all pages) */
+
     .text-primary { color: hsl(var(--primary)); }
     .text-accent { color: hsl(var(--accent)); }
     .bg-accent { background-color: hsl(var(--accent)); }
@@ -52,7 +52,7 @@
     .text-white { color: white; }
     .bg-secondary\/30 { background-color: hsla(var(--secondary), 0.7); }
 
-    /* 5. COMPONENT STYLES (Simulating ShadCN/Custom UI) */
+
     
     /* Card Styles */
     .card { background-color: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: 0.5rem; }
@@ -64,6 +64,13 @@
     /* Buttons */
     .button-outline { border: 1px solid hsl(var(--border)); background-color: transparent; color: hsl(var(--foreground)); }
     .button-outline:hover { background-color: hsl(var(--muted)); }
+
+    .rating-star { cursor: pointer; transition: color 0.2s; }
+    .rating-star.filled { fill: hsl(var(--warning)); color: hsl(var(--warning)); }
+    
+
+    .card { padding: 1.5rem; }
+    .bg-secondary\/30 { background-color: hsla(var(--secondary), 0.7); }
 
     /* Forms */
     input, textarea, select {

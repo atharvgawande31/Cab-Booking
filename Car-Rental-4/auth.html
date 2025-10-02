@@ -1,213 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Account | RentFlow</title>
-    
-    <link rel="stylesheet" href="style.css"> 
-    
+
+    <link rel="stylesheet" href="style.css" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        
-        input { padding-left: 2.5rem !important; }
-        .text-transparent { color: transparent; } 
-        .bg-clip-text { -webkit-background-clip: text; background-clip: text; }
-        .separator { height: 1px; background-color: hsl(var(--border)); } 
+      input {
+        padding-left: 2.5rem !important;
+      }
+      .text-transparent {
+        color: transparent;
+      }
+      .bg-clip-text {
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+      .separator {
+        height: 1px;
+        background-color: hsl(var(--border));
+      }
     </style>
-</head>
-<body class="bg-background text-foreground">
+  </head>
+  <body class="bg-background text-foreground">
     <nav class="bg-white shadow-md sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                
-                <div class="flex-shrink-0">
-                    <a href="index.html" class="text-2xl font-bold text-primary flex items-center">
-                        <i data-lucide="car-front" class="h-6 w-6 text-accent mr-2"></i>
-                        RentACar
-                    </a>
-                </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex-shrink-0">
+            <a
+              href="index.html"
+              class="text-2xl font-bold text-primary flex items-center"
+            >
+              <i data-lucide="car-front" class="h-6 w-6 text-accent mr-2"></i>
+              RentACar
+            </a>
+          </div>
 
-                <div class="hidden md:flex md:items-center md:space-x-8">
-                    
-                    <a href="index.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
-                        Home
-                    </a>
-                    <a href="cars.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
-                        Our Fleet
-                    </a>
-                    <a href="contact.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
-                        About Us
-                    </a>
-                    <a href="contact.html" class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out">
-                        Contact
-                    </a>
-                </div>
+          <div class="hidden md:flex md:items-center md:space-x-8">
+            <a
+              href="index.html"
+              class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out"
+            >
+              Home
+            </a>
+            <a
+              href="cars.html"
+              class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out"
+            >
+              Our Fleet
+            </a>
+            <a
+              href="contact.html"
+              class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out"
+            >
+              About Us
+            </a>
+            <a
+              href="contact.html"
+              class="text-primary hover:text-accent font-medium transition duration-150 ease-in-out"
+            >
+              Contact
+            </a>
+          </div>
 
-                <div class="hidden md:flex md:items-center md:space-x-4">
-              
-                    <button 
-                        class="px-4 py-2 bg-black text-white rounded-lg font-semibold hover:bg-accent/90 transition duration-150 ease-in-out shadow-md"
-                    >
-                       <a href="auth.html">Get Started</a>
-                    </button>
-                </div>
+          <div class="hidden md:flex md:items-center md:space-x-4">
+            <button
+              class="px-4 py-2 bg-black text-white rounded-lg font-semibold hover:bg-accent/90 transition duration-150 ease-in-out shadow-md"
+            >
+              <a href="auth.html">Get Started</a>
+            </button>
+          </div>
 
-                <div class="flex md:hidden">
-                    <button id="mobile-menu-btn" class="text-primary hover:text-accent">
-                        <i data-lucide="menu" class="h-6 w-6"></i>
-                    </button>
-                </div>
-            </div>
+          <div class="flex md:hidden">
+            <button id="mobile-menu-btn" class="text-primary hover:text-accent">
+              <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+          </div>
         </div>
-        
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-muted">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Home</a>
-                <a href="cars.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Our Fleet</a>
-                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">About Us</a>
-                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted">Contact</a>
-                
-                <div class="pt-4 space-y-2 border-t border-muted">
-                  
-                    <button class="w-full h-10 px-4 py-2 text-center bg-accent text-white rounded-lg font-semibold hover:bg-accent/90 transition">
-                       <a href="auth.html">Get Started</a> 
-                    </button>
-                </div>
-            </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-muted"
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="index.html"
+            class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted"
+            >Home</a
+          >
+          <a
+            href="cars.html"
+            class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted"
+            >Our Fleet</a
+          >
+          <a
+            href="contact.html"
+            class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted"
+            >About Us</a
+          >
+          <a
+            href="contact.html"
+            class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-muted"
+            >Contact</a
+          >
+
+          <div class="pt-4 space-y-2 border-t border-muted">
+            <button
+              class="w-full h-10 px-4 py-2 text-center bg-accent text-white rounded-lg font-semibold hover:bg-accent/90 transition"
+            >
+              <a href="auth.html">Get Started</a>
+            </button>
+          </div>
         </div>
+      </div>
     </nav>
 
-    <div class="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
-        <div class="w-full max-w-md">
-            <div id="auth-card" class="card shadow-luxury">
-                </div>
-        </div>
+    <div
+      class="min-h-screen bg-gradient-hero flex items-center justify-center p-4"
+    >
+      <div class="w-full max-w-md">
+        <div id="auth-card" class="card shadow-luxury"></div>
+      </div>
     </div>
 
     <footer class="bg-[#0a2342] text-white py-10 mt-20">
-        <div class="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-8">
-        
+        <div
+          class="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-8"
+        >
           <div>
             <h2 class="text-2xl font-bold">RentACar</h2>
             <p class="mt-3 text-gray-300 text-sm leading-relaxed">
-              Your trusted car rental service for every journey. Safe, affordable, and reliable rides across India.
+              Your trusted car rental service for every journey. Safe, affordable,
+              and reliable rides across India.
             </p>
           </div>
-        
+  
           <div>
             <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
             <ul class="space-y-2 text-gray-300">
-              <li><a href="index.html" class="hover:text-white transition">Home</a></li>
-              <li><a href="terms.html" class="hover:text-white transition">About Us</a></li>
-              <li><a href="cars.html" class="hover:text-white transition">Our Cars</a></li>
-              <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+              <li>
+                <a
+                  href="index.html"
+                  class="hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html" class="hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="cars.html"
+                  class="hover:text-white transition"
+                  >Our Cars</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
-        
+  
           <div>
             <h3 class="text-lg font-semibold mb-3">Support</h3>
             <ul class="space-y-2 text-gray-300">
-               <li><a href="contact.html" class="hover:text-white transition">FAQs</a></li>
-               <li><a href="contact.html" class="hover:text-white transition">Booking Policy</a></li>
-               <li><a href="terms.html" class="hover:text-white transition">Terms & Conditions</a></li>
-               <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+        
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Booking Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Terms & Conditions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
             </ul>
           </div>
-        
+  
           <div>
             <h3 class="text-lg font-semibold mb-3">Contact Us</h3>
             <p class="text-gray-300 text-sm">📍 Mumbai, India</p>
             <p class="text-gray-300 text-sm">📞 +91 98765 43210</p>
             <p class="text-gray-300 text-sm">✉️ support@rentacar.com</p>
-            
-            <div class="flex gap-4 mt-4">
-               <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
-               <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
-               <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
-               <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-linkedin"></i></a>
-            </div>
           </div>
         </div>
-        
-        <div class="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm">
+  
+        <div
+          class="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm"
+        >
           © 2025 RentACar. All rights reserved.
         </div>
-    </footer>
-    
+      </footer>
 
     <script>
-        // --- State and Constants ---
-        let formData = {
-            firstName: "", lastName: "", email: "", password: "", confirmPassword: ""
-        };
-        let showPassword = false;
-        let showConfirmPassword = false;
-        
-        // --- URL and Mode Check (Simulating useSearchParams) ---
-        const urlParams = new URLSearchParams(window.location.search);
-        const IS_SIGN_UP = urlParams.get("signup") === "true";
-        const CAR_ID = urlParams.get("car");
-        const REDIRECT_URL = CAR_ID ? `booking.html?car=${CAR_ID}` : "index.html";
+      // --- State and Constants ---
+      let formData = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      };
+      let showPassword = false;
+      let showConfirmPassword = false;
 
-        // --- Core Functions ---
+      // --- URL and Mode Check (Simulating useSearchParams) ---
+      const urlParams = new URLSearchParams(window.location.search);
+      const IS_SIGN_UP = urlParams.get("signup") === "true";
+      const CAR_ID = urlParams.get("car");
+      const REDIRECT_URL = CAR_ID ? `booking.html?car=${CAR_ID}` : "index.html";
 
-        function handleInputChange(field, value) {
-            formData[field] = value;
+      // --- Core Functions ---
+
+      function handleInputChange(field, value) {
+        formData[field] = value;
+      }
+
+      function togglePasswordVisibility(field, buttonId) {
+        const inputElement = document.getElementById(field);
+        const buttonElement = document.getElementById(buttonId);
+
+        if (inputElement && buttonElement) {
+          if (field === "password") showPassword = !showPassword;
+          else if (field === "confirmPassword")
+            showConfirmPassword = !showConfirmPassword;
+
+          inputElement.type =
+            (field === "password" && showPassword) ||
+            (field === "confirmPassword" && showConfirmPassword)
+              ? "text"
+              : "password";
+
+          // Update icon
+          buttonElement.innerHTML =
+            inputElement.type === "password"
+              ? `<i data-lucide="eye" class="h-4 w-4"></i>`
+              : `<i data-lucide="eye-off" class="h-4 w-4"></i>`;
+          lucide.createIcons();
+        }
+      }
+
+      function handleSubmit(e) {
+        e.preventDefault();
+
+        if (IS_SIGN_UP && formData.password !== formData.confirmPassword) {
+          alert("Error: Passwords do not match!");
+          return;
         }
 
-        function togglePasswordVisibility(field, buttonId) {
-            const inputElement = document.getElementById(field);
-            const buttonElement = document.getElementById(buttonId);
-
-            if (inputElement && buttonElement) {
-                if (field === 'password') showPassword = !showPassword;
-                else if (field === 'confirmPassword') showConfirmPassword = !showConfirmPassword;
-
-                inputElement.type = (field === 'password' && showPassword) || (field === 'confirmPassword' && showConfirmPassword) ? "text" : "password";
-                
-                // Update icon
-                buttonElement.innerHTML = inputElement.type === "password" ? `<i data-lucide="eye" class="h-4 w-4"></i>` : `<i data-lucide="eye-off" class="h-4 w-4"></i>`;
-                lucide.createIcons();
-            }
-        }
-        
-        function handleSubmit(e) {
-            e.preventDefault();
-
-            if (IS_SIGN_UP && formData.password !== formData.confirmPassword) {
-                alert("Error: Passwords do not match!");
-                return;
-            }
-            
-            // 2. Mock Authentication/Storage
-            if (IS_SIGN_UP) {
-                const user = { email: formData.email, firstName: formData.firstName, isLoggedIn: true };
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                alert("Account created successfully! You are now logged in.");
-            } else {
-                if (!e.target.checkValidity()) return;
-                const mockUser = { email: formData.email, firstName: "Customer", isLoggedIn: true };
-                localStorage.setItem('currentUser', JSON.stringify(mockUser));
-                alert("Logged in successfully!");
-            }
-
-            // 3. Redirect to the original page or home
-            window.location.href = REDIRECT_URL;
+        // 2. Mock Authentication/Storage
+        if (IS_SIGN_UP) {
+          const user = {
+            email: formData.email,
+            firstName: formData.firstName,
+            isLoggedIn: true,
+          };
+          localStorage.setItem("currentUser", JSON.stringify(user));
+          alert("Account created successfully! You are now logged in.");
+        } else {
+          if (!e.target.checkValidity()) return;
+          const mockUser = {
+            email: formData.email,
+            firstName: "Customer",
+            isLoggedIn: true,
+          };
+          localStorage.setItem("currentUser", JSON.stringify(mockUser));
+          alert("Logged in successfully!");
         }
 
-        // --- UI Rendering ---
+        // 3. Redirect to the original page or home
+        window.location.href = REDIRECT_URL;
+      }
 
-        function renderAuthCard() {
-            const cardElement = document.getElementById('auth-card');
-            const title = IS_SIGN_UP ? "Create Account" : "Welcome Back";
-            const subtitle = IS_SIGN_UP 
-                ? "Join RentFlow to start your premium car rental experience"
-                : "Sign in to your account to continue";
-            const submitText = IS_SIGN_UP ? "Create Account" : "Sign In";
-            
-            cardElement.innerHTML = `
+      // --- UI Rendering ---
+
+      function renderAuthCard() {
+        const cardElement = document.getElementById("auth-card");
+        const title = IS_SIGN_UP ? "Create Account" : "Welcome Back";
+        const subtitle = IS_SIGN_UP
+          ? "Join RentFlow to start your premium car rental experience"
+          : "Sign in to your account to continue";
+        const submitText = IS_SIGN_UP ? "Create Account" : "Sign In";
+
+        cardElement.innerHTML = `
                 <div class="text-center space-y-4 p-6 border-b border-border">
                     <div class="flex items-center justify-center space-x-2">
                         <div class="bg-gradient-primary p-2 rounded-lg">
@@ -231,7 +329,9 @@
                 <div class="p-6 space-y-6">
                     <form id="auth-form-content" class="space-y-4" onsubmit="handleSubmit(event)">
                         
-                        ${IS_SIGN_UP ? `
+                        ${
+                          IS_SIGN_UP
+                            ? `
                         <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-2">
                                 <label for="firstName" class="block text-sm font-medium text-primary">First Name</label>
@@ -250,7 +350,9 @@
                                     class="h-10 w-full" oninput="handleInputChange('lastName', this.value)"
                                 />
                             </div>
-                        </div>` : ''}
+                        </div>`
+                            : ""
+                        }
 
                         <div class="space-y-2">
                             <label for="email" class="block text-sm font-medium text-primary">Email Address</label>
@@ -281,7 +383,9 @@
                             </div>
                         </div>
 
-                        ${IS_SIGN_UP ? `
+                        ${
+                          IS_SIGN_UP
+                            ? `
                         <div class="space-y-2">
                             <label for="confirmPassword" class="block text-sm font-medium text-primary">Confirm Password</label>
                             <div class="relative">
@@ -298,14 +402,20 @@
                                     <i data-lucide="eye" class="h-4 w-4"></i>
                                 </button>
                             </div>
-                        </div>` : ''}
+                        </div>`
+                            : ""
+                        }
 
-                        ${!IS_SIGN_UP ? `
+                        ${
+                          !IS_SIGN_UP
+                            ? `
                         <div class="text-right">
                             <a href="/forgot-password" class="text-sm text-primary hover:text-accent">
                                 Forgot your password?
                             </a>
-                        </div>` : ''}
+                        </div>`
+                            : ""
+                        }
 
                         <button type="submit" class="w-full bg-gradient-primary text-white hover:opacity-90 h-12 text-lg font-semibold rounded-lg">
                             ${submitText}
@@ -340,7 +450,11 @@
 
                     <div class="text-center text-sm pt-4">
                         <span class="text-muted-foreground">
-                            ${IS_SIGN_UP ? "Already have an account?" : "Don't have an account?"}
+                            ${
+                              IS_SIGN_UP
+                                ? "Already have an account?"
+                                : "Don't have an account?"
+                            }
                         </span>
                         <a 
                             href="auth.html${IS_SIGN_UP ? "" : "?signup=true"}" 
@@ -350,68 +464,72 @@
                         </a>
                     </div>
 
-                    ${IS_SIGN_UP ? `
+                    ${
+                      IS_SIGN_UP
+                        ? `
                     <p class="text-xs text-muted-foreground text-center mt-4">
                         By creating an account, you agree to our 
                         <a href="terms.html" class="text-primary hover:text-accent">Terms of Service</a>
                         and 
                         <a href="privacy.html" class="text-primary hover:text-accent">Privacy Policy</a>
-                    </p>` : ''}
+                    </p>`
+                        : ""
+                    }
                 </div>
             `;
-            
-            // Attach form listener after content is injected
-            document.getElementById('auth-form-content').addEventListener('submit', handleSubmit);
-            lucide.createIcons();
+
+        // Attach form listener after content is injected
+        document
+          .getElementById("auth-form-content")
+          .addEventListener("submit", handleSubmit);
+        lucide.createIcons();
+      }
+
+      // --- Authentication Guard Logic (For Booking Pages) ---
+
+      /**
+       * Checks if a user is currently logged in via localStorage.
+       */
+      function isUserLoggedIn() {
+        try {
+          const user = localStorage.getItem("currentUser");
+          return !!user;
+        } catch (e) {
+          console.error("Local storage access failed:", e);
+          return false;
         }
+      }
 
-
-        // --- Authentication Guard Logic (For Booking Pages) ---
-
-        /**
-         * Checks if a user is currently logged in via localStorage.
-         */
-        function isUserLoggedIn() {
-            try {
-                const user = localStorage.getItem('currentUser');
-                return !!user;
-            } catch (e) {
-                console.error("Local storage access failed:", e);
-                return false;
-            }
+      /**
+       * Call this function on pages like Booking.html or CarDetails.html.
+       * If the user is not logged in, it redirects them to the Auth page.
+       */
+      function requireAuth(carId = null) {
+        if (!isUserLoggedIn()) {
+          let redirectQuery = "";
+          if (carId) {
+            redirectQuery = `&car=${carId}`;
+          }
+          window.location.href = `auth.html?redirect=true${redirectQuery}`;
         }
+      }
 
-        /**
-         * Call this function on pages like Booking.html or CarDetails.html.
-         * If the user is not logged in, it redirects them to the Auth page.
-         */
-        function requireAuth(carId = null) {
-            if (!isUserLoggedIn()) {
-                let redirectQuery = "";
-                if (carId) {
-                    redirectQuery = `&car=${carId}`;
-                }
-                window.location.href = `auth.html?redirect=true${redirectQuery}`;
-            }
+      // --- Initialization ---
+
+      document.addEventListener("DOMContentLoaded", () => {
+        renderAuthCard();
+        lucide.createIcons();
+
+        // Re-attach listener for the mobile menu on the dynamically loaded content
+        const btn = document.getElementById("mobile-menu-btn");
+        const menu = document.getElementById("mobile-menu");
+
+        if (btn && menu) {
+          btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+          });
         }
-
-
-        // --- Initialization ---
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderAuthCard();
-            lucide.createIcons();
-            
-            // Re-attach listener for the mobile menu on the dynamically loaded content
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-
-            if (btn && menu) {
-                btn.addEventListener('click', () => {
-                    menu.classList.toggle('hidden');
-                });
-            }
-        });
+      });
     </script>
-</body>
+  </body>
 </html>

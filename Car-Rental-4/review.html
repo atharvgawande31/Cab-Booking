@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Review - RentACar</title>
+    <link rel="stylesheet" href="style.css"> 
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /*
+         * Theme consistency relies on the external 'style.css' file.
+         * Only necessary component overrides are kept here.
+         */
+        .rating-star { cursor: pointer; transition: color 0.2s; }
+        .rating-star.filled { fill: hsl(var(--warning)); color: hsl(var(--warning)); }
+        
+        /* Utility Fixes for component rendering */
+        .card { padding: 1.5rem; }
+        .bg-secondary\/30 { background-color: hsla(var(--secondary), 0.7); }
+    </style>
+</head>
+<body class="bg-background text-foreground">
+
+    <header id="navbar-placeholder" class="sticky top-0 z-40"></header>
+
+    <div class="min-h-screen">
+        
+        <section class="bg-gradient-primary text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Share Your Experience</h1>
+                    <p class="text-xl text-white/90 max-w-2xl mx-auto">
+                        Tell us about your rental to help us serve you better in the future.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            
+            <div class="flex items-center space-x-2 text-sm mb-6 bg-secondary/30 p-3 rounded-lg">
+                <a href="index.html" class="text-muted-foreground hover:text-foreground">Home</a>
+                <span class="text-muted-foreground">/</span>
+                <a href="my-booking.html" class="text-muted-foreground hover:text-foreground">My Bookings</a>
+                <span class="text-muted-foreground">/</span>
+                <span class="text-foreground font-medium">Review</span>
+            </div>
+
+            <div class="card shadow-luxury">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-4">Review Your Booking</h2>
+                    <p class="text-muted-foreground mb-6">
+                        Booking ID: <span id="booking-id-display" class="font-mono text-primary">Loading...</span>
+                    </p>
+
+                    <form id="review-form" class="space-y-6">
+
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium text-primary">Overall Rating *</label>
+                            <div id="star-rating" class="flex text-4xl space-x-1">
+                                </div>
+                            <input type="hidden" id="rating-value" name="rating-value" required value="0">
+                            <p class="text-sm text-muted-foreground" id="rating-message">Click a star to rate your experience (0/5)</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <label for="car-condition" class="block text-sm font-medium">Car Condition *</label>
+                                <select id="car-condition" required class="h-10 w-full">
+                                    <option value="" disabled selected>How was the car condition?</option>
+                                    <option value="Excellent">Excellent</option>
+                                    <option value="Good">Good</option>
+                                    <option value="Average">Average</option>
+                                    <option value="Poor">Poor</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label for="staff-service" class="block text-sm font-medium">Staff Service *</label>
+                                <select id="staff-service" required class="h-10 w-full">
+                                    <option value="" disabled selected>How was the staff service?</option>
+                                    <option value="Excellent">Excellent</option>
+                                    <option value="Good">Good</option>
+                                    <option value="Average">Average</option>
+                                    <option value="Poor">Poor</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="message" class="block w text-sm font-medium">Detailed Feedback *</label>
+                            <textarea class="w-full p-2" id="message" placeholder="What did you like or dislike most about the rental experience?" rows="6" required></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-primary text-white hover:opacity-90 h-12 text-lg font-semibold rounded-lg">
+                            Submit Review
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-[#0a2342] text-white py-10 mt-20">
+        <div
+          class="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-8"
+        >
+          <div>
+            <h2 class="text-2xl font-bold">RentACar</h2>
+            <p class="mt-3 text-gray-300 text-sm leading-relaxed">
+              Your trusted car rental service for every journey. Safe, affordable,
+              and reliable rides across India.
+            </p>
+          </div>
+  
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <a
+                  href="index.html"
+                  class="hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html" class="hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="cars.html"
+                  class="hover:text-white transition"
+                  >Our Cars</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+  
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Support</h3>
+            <ul class="space-y-2 text-gray-300">
+             
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Booking Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Terms & Conditions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+  
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Contact Us</h3>
+            <p class="text-gray-300 text-sm">📍 Mumbai, India</p>
+            <p class="text-gray-300 text-sm">📞 +91 98765 43210</p>
+            <p class="text-gray-300 text-sm">✉️ support@rentacar.com</p>
+          </div>
+        </div>
+  
+        <div
+          class="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm"
+        >
+          © 2025 RentACar. All rights reserved.
+        </div>
+      </footer>
+
+    <script>
+        // --- State Management ---
+        let currentRating = 0;
+        const starContainer = document.getElementById('star-rating');
+        const ratingInput = document.getElementById('rating-value');
+        const ratingMessage = document.getElementById('rating-message');
+        const bookingId = new URLSearchParams(window.location.search).get('bookingId') || 'REVIEW-MOCK';
+
+        // --- Rendering Functions ---
+
+        /**
+         * Renders the interactive stars.
+         */
+        function renderStars() {
+            starContainer.innerHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                const isFilled = i <= currentRating;
+                const starClass = isFilled ? 'rating-star filled' : 'rating-star text-muted-foreground';
+                
+                const starHtml = `
+                    <svg data-lucide="star" 
+                         class="h-8 w-8 ${starClass}" 
+                         data-value="${i}" 
+                         onclick="setRating(${i})"
+                         onmouseover="previewRating(${i})"
+                         onmouseout="resetPreview()"
+                    ></svg>
+                `;
+                starContainer.innerHTML += starHtml;
+            }
+            // Re-render Lucide icons
+            lucide.createIcons(); 
+        }
+
+        /**
+         * Updates the star rating and input value.
+         */
+        function setRating(value) {
+            currentRating = value;
+            ratingInput.value = value;
+            renderStars();
+            updateRatingMessage();
+        }
+
+        /**
+         * Previews stars on hover.
+         */
+        function previewRating(value) {
+            starContainer.querySelectorAll('svg').forEach(star => {
+                const starValue = parseInt(star.getAttribute('data-value'));
+                if (starValue <= value) {
+                    star.classList.add('filled');
+                } else {
+                    star.classList.remove('filled');
+                }
+            });
+            ratingMessage.textContent = `${value}/5 - ${getRatingText(value)}`;
+        }
+
+        /**
+         * Resets star preview when mouse leaves.
+         */
+        function resetPreview() {
+            renderStars();
+            updateRatingMessage();
+        }
+        
+        function getRatingText(value) {
+            switch(value) {
+                case 1: return "Poor - Needs serious improvement";
+                case 2: return "Below Average - Disappointing";
+                case 3: return "Average - Met expectations";
+                case 4: return "Good - Satisfied";
+                case 5: return "Excellent - Highly Recommended!";
+                default: return "Click a star to rate your experience (0/5)";
+            }
+        }
+
+        function updateRatingMessage() {
+            ratingMessage.textContent = `${currentRating}/5 - ${getRatingText(currentRating)}`;
+            if (currentRating === 0) {
+                 ratingInput.setCustomValidity("Please provide a rating.");
+            } else {
+                 ratingInput.setCustomValidity("");
+            }
+        }
+
+        // --- Submission Handler ---
+        
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            // Re-run rating validation check
+            if (currentRating === 0) {
+                 alert("Please provide an overall star rating.");
+                 return;
+            }
+
+            // Collect final data
+            const reviewData = {
+                bookingId: bookingId,
+                rating: currentRating,
+                carCondition: document.getElementById('car-condition').value,
+                staffService: document.getElementById('staff-service').value,
+                message: document.getElementById('message').value
+            };
+
+            console.log("Review Submitted:", reviewData);
+            
+            // 2. Success Alert and Redirect
+            alert(`✅ Thank you! Your ${currentRating}/5 review for Booking #${bookingId} has been successfully submitted!`);
+            window.location.href = `my_bookings.html`; 
+        }
+
+        // --- Initialization ---
+
+        function init() {
+            // 1. Display Booking ID
+            document.getElementById('booking-id-display').textContent = bookingId;
+            
+            // 2. Render UI
+            renderStars();
+            updateRatingMessage();
+            
+            // 3. Attach Submit Listener
+            document.getElementById('review-form').addEventListener('submit', handleSubmit);
+
+            // Optional: Call Navbar/Footer render functions if available
+            // if (typeof renderNavbar === 'function') renderNavbar();
+            // if (typeof renderFooter === 'function') renderFooter();
+
+            // Final icon render
+            lucide.createIcons();
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>

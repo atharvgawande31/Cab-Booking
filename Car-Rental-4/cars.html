@@ -231,55 +231,94 @@
         </div>
       </div>
     </div>
-    <footer class="bg-[#0a2342] text-white py-10 mt-20">
-        <div class="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-8">
-        
+
+
+   <footer class="bg-[#0a2342] text-white py-10 mt-20">
+        <div
+          class="container mx-auto px-6 lg:px-20 grid grid-cols-1 md:grid-cols-4 gap-8"
+        >
           <div>
             <h2 class="text-2xl font-bold">RentACar</h2>
             <p class="mt-3 text-gray-300 text-sm leading-relaxed">
-              Your trusted car rental service for every journey. Safe, affordable, and reliable rides across India.
+              Your trusted car rental service for every journey. Safe, affordable,
+              and reliable rides across India.
             </p>
           </div>
-        
+  
           <div>
             <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
             <ul class="space-y-2 text-gray-300">
-              <li><a href="#" class="hover:text-white transition">Home</a></li>
-              <li><a href="#" class="hover:text-white transition">About Us</a></li>
-              <li><a href="#" class="hover:text-white transition">Our Cars</a></li>
-              <li><a href="#" class="hover:text-white transition">Contact</a></li>
+              <li>
+                <a
+                  href="index.html"
+                  class="hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html" class="hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="cars.html"
+                  class="hover:text-white transition"
+                  >Our Cars</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
-        
+  
           <div>
             <h3 class="text-lg font-semibold mb-3">Support</h3>
             <ul class="space-y-2 text-gray-300">
-              <li><a href="#" class="hover:text-white transition">FAQs</a></li>
-              <li><a href="#" class="hover:text-white transition">Booking Policy</a></li>
-              <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
-              <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+          
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Booking Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Terms & Conditions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="privacy.html"
+                  class="hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
             </ul>
           </div>
-        
+  
           <div>
             <h3 class="text-lg font-semibold mb-3">Contact Us</h3>
             <p class="text-gray-300 text-sm">📍 Mumbai, India</p>
             <p class="text-gray-300 text-sm">📞 +91 98765 43210</p>
             <p class="text-gray-300 text-sm">✉️ support@rentacar.com</p>
-            
-            <div class="flex gap-4 mt-4">
-              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
-              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="text-gray-300 hover:text-white text-xl"><i class="fab fa-linkedin"></i></a>
-            </div>
           </div>
         </div>
-        
-        <div class="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm">
+  
+        <div
+          class="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm"
+        >
           © 2025 RentACar. All rights reserved.
         </div>
-    </footer>
+      </footer>
 
     <script>
       // --- Data Definitions ---
@@ -357,12 +396,9 @@
                 >
                     <div class="aspect-video bg-gradient-card relative overflow-hidden">
                         <div class="absolute inset-0 bg-accent/5 flex items-center justify-center">
-                            <div class="text-center">
-                                <i data-lucide="gauge" class="h-16 w-16 text-accent/40 mx-auto mb-2"></i>
-                                <p class="text-sm text-foreground/70 font-medium">${
-                                  car.name
-                                }</p>
-                            </div>
+                            <img src=${car.image} alt=${car.name} class="w-full rounded-lg" />
+                            
+                          
                         </div>
                         <div class="absolute top-3 right-3 bg-white/80 text-black/70 px-3 py-1.5 rounded-full shadow-lg">
                             <span class="text-sm font-bold">₹${car.price.toLocaleString()}/day</span>
