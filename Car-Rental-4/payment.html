@@ -139,7 +139,7 @@
                     </p>
                     
                     <p class="mb-6 text-lg text-gray-600">
-                        Your **${data.carName}** rental is confirmed and ready for pickup.
+                        Your ${data.carName}rental is confirmed and ready for pickup.
                     </p>
 
                     <div class="inline-block p-4 rounded-lg bg-white shadow-md mb-8">
@@ -165,13 +165,11 @@
         contentElement.innerHTML = contentHTML;
         lucide.createIcons();
 
-        // --- ALERT FUNCTIONALITY (As requested) ---
-        alert(
-          `✅ Success! Your booking (${data.bookingId}) for the ${data.carName} is confirmed. Total cost: ₹${data.totalPrice}.`
-        );
+
+     
       }
 
-      // --- Initialization ---
+
       document.addEventListener("DOMContentLoaded", () => {
         renderSuccessPage();
       });
