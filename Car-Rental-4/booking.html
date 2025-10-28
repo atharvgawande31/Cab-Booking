@@ -234,15 +234,16 @@
                 </div>
               </div>
 
-              <button
+              <a href="paymentGateway.html"><button
                 type="submit"
                 id="proceed-button"
-                class="w-full h-12 bg-gradient-primary text-white hover:opacity-90 text-lg font-semibold rounded-lg flex items-center justify-center "
-               
+                class="w-full h-12 bg-gradient-primary text-white hover:opacity-90 text-lg font-semibold rounded-lg flex items-center justify-center"
+                disabled
               >
                 <i data-lucide="credit-card" class="h-5 w-5 mr-2"></i>
-              <a href="payment.html"> Proceed to Payment</a>
+                Proceed to Payment
               </button>
+              </a>
             </form>
           </div>
 
@@ -423,9 +424,6 @@
         return MOCK_CAR_DATA.find((c) => c.id === carId) || MOCK_CAR_DATA[0];
       }
 
-      proceedButton.addEventListener("click" , () => {
-        window.location.href = "payment.html"
-      })
       /**
        * Calculates the rental duration in rounded-up days for pricing.
        */
@@ -790,12 +788,56 @@
           return;
         }
 
-        // 3. Proceed to payment (Simulation)
-        alert(
-          "Booking details saved! Proceeding to Payment page. Total: ₹" +
-            total.toFixed(2)
-        );
-        // In a real app: window.location.href = `payment_success.html?id=CF-456&car=${selectedCar.name}&total=${total.toFixed(2)}&date=${formData.pickupDate}`;
+        // Calculate final pricing details
+        const fullDaysForPricing = calculateDays();
+        const selectedInsurance = INSURANCE_OPTIONS.find(
+          (opt) => opt.value === formData.insuranceOption
+        ) || INSURANCE_OPTIONS[0];
+        
+        const pricePerDay = selectedCar.price;
+        const subtotal = pricePerDay * fullDaysForPricing;
+        const insuranceCostTotal = selectedInsurance.pricePerDay * fullDaysForPricing;
+        const taxes = (subtotal + insuranceCostTotal) * 0.15;
+        const total = subtotal + insuranceCostTotal + taxes;
+
+        // Prepare URL parameters for payment gateway
+        const paymentParams = new URLSearchParams({
+          // Car details
+          car: selectedCar.name,
+          carId: selectedCar.id,
+          price: pricePerDay,
+          image: selectedCar.image,
+          category: selectedCar.category,
+          
+          // Booking details
+          days: fullDaysForPricing,
+          pickupLocation: formData.pickupLocation,
+          dropoffLocation: formData.dropoffLocation,
+          pickupDate: formData.pickupDate,
+          pickupTime: formData.pickupTime,
+          dropoffDate: formData.dropoffDate,
+          
+          // Personal details
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          licenseNumber: formData.licenseNumber,
+          
+          // Insurance and extras
+          insuranceOption: formData.insuranceOption,
+          insuranceLabel: selectedInsurance.label,
+          insuranceCost: insuranceCostTotal.toFixed(2),
+          specialRequests: formData.specialRequests,
+          
+          // Pricing breakdown
+          subtotal: subtotal.toFixed(2),
+          taxes: taxes.toFixed(2),
+          total: total.toFixed(2)
+        });
+
+        // Redirect to payment gateway with all data
+        window.location.href = `paymentGateway.html?${paymentParams.toString()}`;
       }
 
       function setupEventListeners() {

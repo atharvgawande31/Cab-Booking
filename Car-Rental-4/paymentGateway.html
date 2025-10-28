@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete Your Booking - RentACar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      /* Simple styles for active tabs */
+      .tab-btn.active {
+        border-color: black;
+        background-color: #f3f4f6; /* bg-gray-100 */
+      }
+      .tab-pane {
+        display: none;
+      }
+      .tab-pane.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex-shrink-0">
+            <a
+              href="index.html"
+              class="text-2xl font-bold text-primary flex items-center"
+            >
+              <i data-lucide="car-front" class="h-6 w-6 text-black mr-2"></i>
+              RentACar
+            </a>
+          </div>
+          <div class="hidden md:flex md:items-center md:space-x-8">
+            <a
+              href="index.html"
+              class="text-gray-700 hover:text-black font-medium"
+            >
+              Home
+            </a>
+            <a href="cars.html" class="text-gray-700 hover:text-black font-medium">
+              Our Fleet
+            </a>
+            <a
+              href="about.html"
+              class="text-gray-700 hover:text-black font-medium"
+            >
+              About Us
+            </a>
+            <a
+              href="contact.html"
+              class="text-gray-700 hover:text-black font-medium"
+            >
+              Contact
+            </a>
+          </div>
+          <div class="hidden md:flex md:items-center md:space-x-4">
+            <button
+              class="px-4 py-2 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition"
+            >
+              <a href="auth.html">Get Started</a>
+            </button>
+          </div>
+          <div class="flex md:hidden">
+            <button id="mobile-menu-btn" class="text-gray-700 hover:text-black">
+              <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-gray-200"
+      ></div>
+    </nav>
+
+    <div class="min-h-screen container mx-auto max-w-7xl px-4 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 bg-white rounded-xl shadow-lg border p-8">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            Secure Payment
+          </h2>
+
+          <div class="mb-6">
+            <div class="flex border-b">
+              <button
+                id="card-tab-btn"
+                class="tab-btn flex-1 py-3 px-4 font-semibold text-gray-700 border-b-2 transition active"
+                data-tab="card"
+              >
+                <i data-lucide="credit-card" class="inline-block h-5 w-5 mr-2"></i
+                >Credit/Debit Card
+              </button>
+              <button
+                id="upi-tab-btn"
+                class="tab-btn flex-1 py-3 px-4 font-semibold text-gray-700 border-b-2 border-transparent transition"
+                data-tab="upi"
+              >
+                <i data-lucide="smartphone" class="inline-block h-5 w-5 mr-2"></i
+                >UPI (for India)
+              </button>
+            </div>
+          </div>
+
+          <form id="payment-form">
+            <div id="card-tab-pane" class="tab-pane active">
+              <div class="space-y-4">
+                <div>
+                  <label for="card-name" class="block text-sm font-medium mb-1"
+                    >Cardholder Name</label
+                  >
+                  <input
+                    type="text"
+                    id="card-name"
+                    placeholder="Full Name as on Card"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="card-number" class="block text-sm font-medium mb-1"
+                    >Card Number</label
+                  >
+                  <div class="relative">
+                    <input
+                      type="text"
+                      id="card-number"
+                      placeholder="0000 0000 0000 0000"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black"
+                      required
+                    />
+                    <i
+                      data-lucide="lock"
+                      class="absolute right-4 top-3.5 h-5 w-5 text-gray-400"
+                    ></i>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      for="card-expiry"
+                      class="block text-sm font-medium mb-1"
+                      >Expiry Date</label
+                    >
+                    <input
+                      type="text"
+                      id="card-expiry"
+                      placeholder="MM / YY"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="card-cvv" class="block text-sm font-medium mb-1"
+                      >CVV</label
+                    >
+                    <input
+                      type="text"
+                      id="card-cvv"
+                      placeholder="123"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="upi-tab-pane" class="tab-pane">
+              <div class="space-y-4">
+                <div>
+                  <label for="upi-id" class="block text-sm font-medium mb-1"
+                    >Enter UPI ID</label
+                  >
+                  <input
+                    type="text"
+                    id="upi-id"
+                    placeholder="yourname@bank"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black"
+                  />
+                </div>
+                <div class="text-center text-gray-500 my-4">OR</div>
+                <div class="flex flex-col items-center">
+                  <p class="text-sm font-medium mb-2">
+                    Scan QR Code with your UPI App
+                  </p>
+                  <div
+                    class="w-48 h-48 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500"
+                  >
+                    [QR Code Placeholder]
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <button
+                type="submit"
+                id="pay-button"
+                class="w-full px-8 py-4 bg-black text-white rounded-lg font-semibold text-lg hover:bg-gray-800 transition shadow-lg"
+              >
+                Pay Now
+              </button>
+            </div>
+            <p class="text-xs text-gray-500 mt-4 text-center">
+              By clicking "Pay Now", you agree to our Terms and Conditions.
+            </p>
+          </form>
+        </div>
+
+        <div class="lg:col-span-1">
+          <div
+            class="bg-white rounded-xl shadow-lg border p-6 sticky top-24"
+          >
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">
+              Booking Summary
+            </h3>
+
+            <div class="flex items-center space-x-4 mb-4">
+              <img
+                id="car-image"
+                src="/images/default-car.jpg"
+                alt="Car"
+                class="w-24 h-16 object-cover rounded-lg"
+              />
+              <div>
+                <h4 id="car-name" class="text-lg font-semibold">
+                  Loading...
+                </h4>
+                <p id="rental-duration" class="text-sm text-gray-600">
+                  Loading...
+                </p>
+              </div>
+            </div>
+
+            <div id="booking-details" class="space-y-3 pt-4 border-t">
+              <h4 class="font-semibold text-gray-800">Booking Details</h4>
+              <div class="text-sm space-y-2">
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Pickup:</span>
+                  <span
+                    id="pickup-info"
+                    class="font-medium text-right"
+                    >Loading...</span
+                  >
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Drop-off:</span>
+                  <span
+                    id="dropoff-info"
+                    class="font-medium text-right"
+                    >Loading...</span
+                  >
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Customer:</span>
+                  <span
+                    id="customer-info"
+                    class="font-medium text-right"
+                    >Loading...</span
+                  >
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Insurance:</span>
+                  <span
+                    id="insurance-info"
+                    class="font-medium text-right"
+                    >Loading...</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3 pt-4 border-t">
+              <h4 class="font-semibold text-gray-800">Price Breakdown</h4>
+              <div class="flex justify-between text-gray-600">
+                <p>Base Price (per day)</p>
+                <p id="price-per-day" class="font-medium">₹0.00</p>
+              </div>
+              <div class="flex justify-between text-gray-600">
+                <p>Subtotal</p>
+                <p id="subtotal" class="font-medium">₹0.00</p>
+              </div>
+              <div class="flex justify-between text-gray-600" id="insurance-row">
+                <p>Insurance</p>
+                <p id="insurance-cost" class="font-medium">₹0.00</p>
+              </div>
+              <div class="flex justify-between text-gray-600">
+                <p>Taxes & Fees</p>
+                <p id="taxes" class="font-medium">₹0.00</p>
+              </div>
+              <div
+                class="flex justify-between text-xl font-bold text-gray-900 pt-4 border-t"
+              >
+                <p>Total Amount</p>
+                <p id="total-price">₹0.00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+
+        // --- TAB SWITCHING LOGIC ---
+        const tabButtons = document.querySelectorAll(".tab-btn");
+        const tabPanes = document.querySelectorAll(".tab-pane");
+
+        // --- THIS IS THE FIX ---
+        // Get references to the card inputs
+        const cardInputs = [
+          document.getElementById("card-name"),
+          document.getElementById("card-number"),
+          document.getElementById("card-expiry"),
+          document.getElementById("card-cvv"),
+        ];
+
+        tabButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const tabId = btn.getAttribute("data-tab");
+
+            // --- THIS IS THE FIX ---
+            // Toggle 'required' attribute based on the active tab
+            if (tabId === "upi") {
+              // If UPI tab, make card fields NOT required
+              cardInputs.forEach((input) => (input.required = false));
+            } else {
+              // If Card tab, make card fields required again
+              cardInputs.forEach((input) => (input.required = true));
+            }
+
+            // Update button active state
+            tabButtons.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            // Update pane active state
+            tabPanes.forEach((pane) => {
+              if (pane.id === `${tabId}-tab-pane`) {
+                pane.classList.add("active");
+              } else {
+                pane.classList.remove("active");
+              }
+            });
+          });
+        });
+        // --- END OF TAB LOGIC ---
+
+        // --- DYNAMIC DATA LOADING ---
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const carName = urlParams.get("car") || "Maruti Suzuki Swift";
+        const carId = urlParams.get("carId") || "1";
+        const carCategory = urlParams.get("category") || "Sedan";
+        const pricePerDay = parseFloat(urlParams.get("price")) || 1800;
+        const days = parseInt(urlParams.get("days")) || 2;
+        const carImage = urlParams.get("image") || "/images/swift.jpg";
+
+        // Booking details
+        const pickupLocation =
+          urlParams.get("pickupLocation") || "Not specified";
+        const dropoffLocation =
+          urlParams.get("dropoffLocation") || "Not specified";
+        const pickupDate = urlParams.get("pickupDate") || "";
+        const pickupTime = urlParams.get("pickupTime") || "";
+        const dropoffDate = urlParams.get("dropoffDate") || "";
+
+        const firstName = urlParams.get("firstName") || "";
+        const lastName = urlParams.get("lastName") || "";
+        const email = urlParams.get("email") || "";
+        const phone = urlParams.get("phone") || "";
+        const licenseNumber = urlParams.get("licenseNumber") || "";
+
+        const insuranceOption = urlParams.get("insuranceOption") || "basic";
+        const insuranceLabel =
+          urlParams.get("insuranceLabel") || "Basic Coverage";
+        const insuranceCost = parseFloat(urlParams.get("insuranceCost")) || 0;
+        const specialRequests = urlParams.get("specialRequests") || "";
+
+        const subtotal =
+          parseFloat(urlParams.get("subtotal")) || pricePerDay * days;
+        const taxes = parseFloat(urlParams.get("taxes")) || subtotal * 0.18;
+        const total = parseFloat(urlParams.get("total")) || subtotal + taxes;
+        // --- END OF DATA LOADING ---
+
+        // --- RENDER DATA INTO UI ---
+        const formatCurrency = (amount) => `₹${amount.toFixed(2)}`;
+
+        document.getElementById("car-name").textContent = carName;
+        document.getElementById("car-image").src = carImage;
+        document.getElementById("rental-duration").textContent =
+          `Rental for ${days} ${days > 1 ? "days" : "day"}`;
+
+        const formatDate = (dateString) => {
+          if (!dateString) return "Not specified";
+          return new Date(dateString).toLocaleDateString("en-IN", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          });
+        };
+
+        document.getElementById("pickup-info").innerHTML =
+          `${pickupLocation}<br><small>${formatDate(pickupDate)} ${
+            pickupTime || ""
+          }</small>`;
+        document.getElementById("dropoff-info").innerHTML =
+          `${dropoffLocation}<br><small>${formatDate(dropoffDate)} 10:00</small>`;
+        document.getElementById("customer-info").innerHTML =
+          `${firstName} ${lastName}<br><small>${email}</small>`;
+        document.getElementById("insurance-info").textContent = insuranceLabel;
+
+        document.getElementById("price-per-day").textContent =
+          formatCurrency(pricePerDay);
+        document.getElementById("subtotal").textContent =
+          formatCurrency(subtotal);
+
+        const insuranceRow = document.getElementById("insurance-row");
+        const insuranceCostElement =
+          document.getElementById("insurance-cost");
+        if (insuranceCost > 0) {
+          insuranceCostElement.textContent = formatCurrency(insuranceCost);
+          insuranceRow.style.display = "flex";
+        } else {
+          insuranceRow.style.display = "none";
+        }
+
+        document.getElementById("taxes").textContent = formatCurrency(taxes);
+        document.getElementById("total-price").textContent =
+          formatCurrency(total);
+
+        document.getElementById("pay-button").textContent =
+          `Pay ${formatCurrency(total)} Securely`;
+        // --- END OF RENDER ---
+
+        // --- FORM SUBMISSION LOGIC ---
+        const paymentForm = document.getElementById("payment-form");
+        paymentForm.addEventListener("submit", (e) => {
+          // This prevents the page from reloading
+          e.preventDefault();
+
+          const payButton = document.getElementById("pay-button");
+
+          payButton.disabled = true;
+          payButton.textContent = "Processing Payment...";
+
+          // Simulate payment delay
+          setTimeout(() => {
+            alert(
+              `Payment Successful!\n\nBooking Details:\n- Car: ${carName}\n- Customer: ${firstName} ${lastName}\n- Duration: ${days} days\n- Pickup: ${pickupLocation} on ${formatDate(
+                pickupDate
+              )}\n- Total Paid: ${formatCurrency(
+                total
+              )}\n\nBooking confirmation will be sent to: ${email}`
+            );
+
+            // Redirect to homepage after success
+            window.location.href = "index.html";
+          }, 2000);
+        });
+        // --- END OF SUBMISSION LOGIC ---
+
+        // --- MOBILE MENU ---
+        const btn = document.getElementById("mobile-menu-btn");
+        const menu = document.getElementById("mobile-menu");
+        if (btn && menu) {
+          btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
